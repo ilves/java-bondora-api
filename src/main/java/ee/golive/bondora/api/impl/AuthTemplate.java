@@ -16,10 +16,8 @@
 
 package ee.golive.bondora.api.impl;
 
-import ee.golive.bondora.api.ApiResult;
-import ee.golive.bondora.api.AuthOperations;
-import ee.golive.bondora.api.AuthTokenResult;
-import ee.golive.bondora.api.UserCredentials;
+import ee.golive.bondora.api.*;
+import org.springframework.core.ParameterizedTypeReference;
 
 public class AuthTemplate implements AuthOperations {
 
@@ -32,7 +30,8 @@ public class AuthTemplate implements AuthOperations {
     @Override
     public AuthTokenResult login(String username, String password) {
         UserCredentials userCredentials = new UserCredentials(username, password);
-        return api.postObject("login", userCredentials, AuthTokenResult.class);
+        ParameterizedTypeReference reference = new ParameterizedTypeReference<ApiResultSingle<AuthTokenResult>>() {};
+        return ((ApiResultSingle<AuthTokenResult>) api.postObject("login", userCredentials, reference)).getPayload();
     }
 
     @Override

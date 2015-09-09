@@ -21,6 +21,7 @@ import ee.golive.bondora.api.Bondora;
 import ee.golive.bondora.api.impl.json.BondoraModule;
 import ee.golive.bondora.api.util.URIBuilder;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
@@ -90,6 +91,7 @@ public class BondoraTemplate implements Bondora {
         return userOperations;
     }
 
+    @Override
     public void setAccessToken(String accessToken) {
         this.accessToken.setToken(accessToken);
     }
@@ -105,6 +107,12 @@ public class BondoraTemplate implements Bondora {
     public <T> T fetchObject(String resource, MultiValueMap<String, String> queryParameters, ParameterizedTypeReference<T> responseType) {
         URI uri = URIBuilder.fromUri(getApiUrl(resource)).queryParams(queryParameters).build();
         return getRestTemplate().exchange(uri, HttpMethod.GET, null, responseType).getBody();
+    }
+
+    public <T> T postObject(String resource, Object entity, ParameterizedTypeReference<T> responseType) {
+        URI uri = URIBuilder.fromUri(getApiUrl(resource)).build();
+        HttpEntity<?> httpEntity = new HttpEntity<Object>(entity, null);
+        return getRestTemplate().exchange(uri, HttpMethod.POST, httpEntity, responseType).getBody();
     }
 
     public <T> T fetchObject(String resource, ParameterizedTypeReference<T> responseType) {

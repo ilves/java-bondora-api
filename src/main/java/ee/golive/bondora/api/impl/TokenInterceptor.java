@@ -37,7 +37,9 @@ public class TokenInterceptor implements ClientHttpRequestInterceptor {
             HttpRequest request, byte[] body, ClientHttpRequestExecution execution)
             throws IOException {
         HttpHeaders headers = request.getHeaders();
-        headers.add("Authorization", "Token " + token.getToken());
+        if (token.getToken().length() > 0) {
+            headers.add("Authorization", "Token " + token.getToken());
+        }
         return execution.execute(request, body);
     }
 

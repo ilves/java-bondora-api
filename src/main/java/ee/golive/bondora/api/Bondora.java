@@ -40,4 +40,10 @@ public interface Bondora {
      * @return {@link AuthOperations}
      */
     AuthOperations getAuthOperations();
+
+    /**
+     * Sets authentication token
+     * @param token authentication token
+     */
+    void setAccessToken(String token);
 }
