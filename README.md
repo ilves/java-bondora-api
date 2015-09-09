@@ -9,8 +9,12 @@ This repository contains the open source JAVA SDK that allows you to access the 
 
 To use the API in your maven project, include the following in your pom.xml:
 
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
     <dependency>
-        <groupId>ee.golive</groupId>
+        <groupId>com.github.ilves</groupId>
         <artifactId>java-bondora-api</artifactId>
-        <version>0.1.0</version>
+        <version>b321b360f1</version>
     </dependency>
