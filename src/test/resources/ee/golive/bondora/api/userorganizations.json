@@ -1,0 +1,29 @@
+{
+  "Payload": [
+    {
+      "Id": "791d058c-1f30-43e6-94ca-d3eca8ddbc0e",
+      "Name": "sample string 2",
+      "ActiveToDate": "2015-09-08T10:49:12",
+      "IsReadonly": true
+    },
+    {
+      "Id": "791d058c-1f30-43e6-94ca-d3eca8ddbc0e",
+      "Name": "sample string 2",
+      "ActiveToDate": "2015-09-08T10:49:12",
+      "IsReadonly": true
+    }
+  ],
+  "Success": true,
+  "Errors": [
+    {
+      "Code": 1,
+      "Message": "sample string 2",
+      "Details": "sample string 3"
+    },
+    {
+      "Code": 1,
+      "Message": "sample string 2",
+      "Details": "sample string 3"
+    }
+  ]
+}

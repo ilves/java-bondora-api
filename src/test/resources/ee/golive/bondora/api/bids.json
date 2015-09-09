@@ -1,0 +1,47 @@
+{
+  "Payload": [
+    {
+      "AuctionId": "c6207cc1-09ef-4f6a-a6a3-69a1c9e68897",
+      "RequestedBidAmount": 2.0,
+      "ActualBidAmount": 1.0,
+      "RequestedBidMinimumLimit": 1.0,
+      "Status": 0,
+      "BidRequestedDate": "2015-09-03T13:29:31.0159753+03:00",
+      "BidProcessedDate": "2015-09-03T13:29:31.0159753+03:00",
+      "BidFailureReason": 0
+    },
+    {
+      "AuctionId": "c6207cc1-09ef-4f6a-a6a3-69a1c9e68897",
+      "RequestedBidAmount": 2.0,
+      "ActualBidAmount": 1.0,
+      "RequestedBidMinimumLimit": 1.0,
+      "Status": 0,
+      "BidRequestedDate": "2015-09-03T13:29:31.0159753+03:00",
+      "BidProcessedDate": "2015-09-03T13:29:31.0159753+03:00",
+      "BidFailureReason": 0
+    },
+    {
+      "AuctionId": "c6207cc1-09ef-4f6a-a6a3-69a1c9e68897",
+      "RequestedBidAmount": 2.0,
+      "ActualBidAmount": 1.0,
+      "RequestedBidMinimumLimit": 1.0,
+      "Status": 0,
+      "BidRequestedDate": "2015-09-03T13:29:31.0159753+03:00",
+      "BidProcessedDate": "2015-09-03T13:29:31.0159753+03:00",
+      "BidFailureReason": 0
+    }
+  ],
+  "Success": true,
+  "Errors": [
+    {
+      "Code": 1,
+      "Message": "sample string 2",
+      "Details": "sample string 3"
+    },
+    {
+      "Code": 1,
+      "Message": "sample string 2",
+      "Details": "sample string 3"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "Success": true,
+  "Errors": [
+    {
+      "Code": 1,
+      "Message": "sample string 2",
+      "Details": "sample string 3"
+    },
+    {
+      "Code": 1,
+      "Message": "sample string 2",
+      "Details": "sample string 3"
+    }
+  ]
+}
