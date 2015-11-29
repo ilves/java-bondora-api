@@ -35,7 +35,6 @@ public class BondoraModule extends SimpleModule {
         context.setMixInAnnotations(BidRequest.class, BidRequestMixin.class);
         context.setMixInAnnotations(BidSummary.class, BidSummaryMixin.class);
         context.setMixInAnnotations(UserOrganization.class, UserOrganizationMixin.class);
-        context.setMixInAnnotations(UserCredentials.class, UserCredentialsMixin.class);
-        context.setMixInAnnotations(AuthTokenResult.class, AuthTokenResultMixin.class);
+        context.setMixInAnnotations(SecondMarketItem.class, SecondMarketItemMixin.class);
     }
 }

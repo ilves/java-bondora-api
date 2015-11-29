@@ -30,16 +30,16 @@ public interface Bondora {
     AuctionOperations getAuctionOperations();
 
     /**
+     * API for working with secondMarket
+     * @return {@link SecondaryMarketOperations}
+     */
+    SecondaryMarketOperations getSecondMarketOperations();
+
+    /**
      * API for working with user related operations.
      * @return {@link UserOperations}
      */
     UserOperations getUserOperations();
-
-    /**
-     * API for working with authentication related operations.
-     * @return {@link AuthOperations}
-     */
-    AuthOperations getAuthOperations();
 
     /**
      * Sets authentication token

@@ -14,17 +14,13 @@
  * limitations under the License.
  */
 
-package ee.golive.bondora.api.impl.json;
+package ee.golive.bondora.api;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-abstract class UserCredentialsMixin extends BondoraObjectMixin {
+public interface SecondaryMarketOperations {
 
-    @JsonProperty("Username")
-    private String username;
+    List<Auction> getAuctions();
 
-    @JsonProperty("Password")
-    private String password;
+    List<Auction> getAuctions(String query);
 }

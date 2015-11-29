@@ -18,6 +18,8 @@ package ee.golive.bondora.api.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ee.golive.bondora.api.Bondora;
+import ee.golive.bondora.api.SecondaryMarketOperations;
+import ee.golive.bondora.api.SecondaryMarketTemplate;
 import ee.golive.bondora.api.impl.json.BondoraModule;
 import ee.golive.bondora.api.util.URIBuilder;
 import org.springframework.core.ParameterizedTypeReference;
@@ -42,15 +44,15 @@ public class BondoraTemplate implements Bondora {
 
     private AccessToken accessToken;
 
-    public static String API_URL = "https://api-sandbox.bondora.com:443/api/";
+    public static String API_URL = "https://api-sandbox.bondora.com/api/";
 
     public static String API_VERSION = "v1";
 
     private RestTemplate restTemplate;
 
-    private AuthTemplate authOperations;
-
     private AuctionTemplate auctionOperations;
+
+    private SecondaryMarketOperations secondaryMarketOperations;
 
     private UserTemplate userOperations;
 
@@ -66,9 +68,9 @@ public class BondoraTemplate implements Bondora {
     }
 
     private void initialize() {
-        authOperations = new AuthTemplate(this);
         auctionOperations = new AuctionTemplate(this);
         userOperations = new UserTemplate(this);
+        secondaryMarketOperations = new SecondaryMarketTemplate(this);
         restTemplate = createRestTemplate();
     }
 
@@ -77,13 +79,13 @@ public class BondoraTemplate implements Bondora {
     }
 
     @Override
-    public AuthTemplate getAuthOperations() {
-        return authOperations;
+    public AuctionTemplate getAuctionOperations() {
+        return auctionOperations;
     }
 
     @Override
-    public AuctionTemplate getAuctionOperations() {
-        return auctionOperations;
+    public SecondaryMarketOperations getSecondMarketOperations() {
+        return secondaryMarketOperations;
     }
 
     @Override

@@ -18,20 +18,41 @@ package ee.golive.bondora.api.impl.json;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import ee.golive.bondora.api.UserOrganization;
-
-import java.util.Date;
-import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class AuthTokenResultMixin extends BondoraObjectMixin {
+abstract class SecondMarketItemMixin extends BondoraObjectMixin {
 
-    @JsonProperty("Token")
-    private String token;
+    @JsonProperty("Id")
+    private String id;
 
-    @JsonProperty("ValidUntil")
-    private Date validUntil;
+    @JsonProperty("loanPartId")
+    private String loanPartId;
 
-    @JsonProperty("UserOrganizations")
-    private List<UserOrganization> userOrganizations;
+    @JsonProperty("Amount")
+    private Double amount;
+
+    @JsonProperty("auctionId")
+    private String auctionId;
+
+    @JsonProperty("Country")
+    private String country;
+
+    @JsonProperty("CreditScore")
+    private String creditScore;
+
+    @JsonProperty("Rating")
+    private String rating;
+
+    @JsonProperty("Interest")
+    private String interest;
+
+    @JsonProperty("loanStatusCode")
+    private Integer loanStatusCode;
+
+    @JsonProperty("UserName")
+    private String userName;
+
+    @JsonProperty("Xirr")
+    private Double xirr;
+
 }
