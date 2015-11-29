@@ -14,9 +14,12 @@
  * limitations under the License.
  */
 
-package ee.golive.bondora.api;
+package ee.golive.bondora.api.impl;
 
-import ee.golive.bondora.api.impl.BondoraTemplate;
+import ee.golive.bondora.api.ApiResultList;
+import ee.golive.bondora.api.Auction;
+import ee.golive.bondora.api.SecondMarketItem;
+import ee.golive.bondora.api.SecondaryMarketOperations;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -33,14 +36,14 @@ public class SecondaryMarketTemplate implements SecondaryMarketOperations {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Auction> getAuctions() {
+    public List<SecondMarketItem> getAuctions() {
         return getAuctions(null);
     }
 
     @Override
-    public List<Auction> getAuctions(String query) {
+    public List<SecondMarketItem> getAuctions(String query) {
         ParameterizedTypeReference reference = new ParameterizedTypeReference<ApiResultList<Auction>>() {};
-        return ((ApiResultList<Auction>) api.fetchObject("secondarymarket", getQueryParameters(query), reference)).getPayload();
+        return ((ApiResultList<SecondMarketItem>) api.fetchObject("secondarymarket", getQueryParameters(query), reference)).getPayload();
     }
 
     private MultiValueMap<String, String> getQueryParameters(String query) {

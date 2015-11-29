@@ -20,7 +20,7 @@ import java.util.List;
 
 public interface SecondaryMarketOperations {
 
-    List<Auction> getAuctions();
+    List<SecondMarketItem> getAuctions();
 
-    List<Auction> getAuctions(String query);
+    List<SecondMarketItem> getAuctions(String query);
 }

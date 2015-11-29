@@ -19,7 +19,6 @@ package ee.golive.bondora.api.impl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ee.golive.bondora.api.Bondora;
 import ee.golive.bondora.api.SecondaryMarketOperations;
-import ee.golive.bondora.api.SecondaryMarketTemplate;
 import ee.golive.bondora.api.impl.json.BondoraModule;
 import ee.golive.bondora.api.util.URIBuilder;
 import org.springframework.core.ParameterizedTypeReference;
