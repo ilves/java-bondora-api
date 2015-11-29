@@ -17,7 +17,6 @@
 package ee.golive.bondora.api.impl;
 
 import ee.golive.bondora.api.ApiResultList;
-import ee.golive.bondora.api.Auction;
 import ee.golive.bondora.api.SecondMarketItem;
 import ee.golive.bondora.api.SecondaryMarketOperations;
 import org.springframework.core.ParameterizedTypeReference;
@@ -42,7 +41,7 @@ public class SecondaryMarketTemplate implements SecondaryMarketOperations {
 
     @Override
     public List<SecondMarketItem> getAuctions(String query) {
-        ParameterizedTypeReference reference = new ParameterizedTypeReference<ApiResultList<Auction>>() {};
+        ParameterizedTypeReference reference = new ParameterizedTypeReference<ApiResultList<SecondMarketItem>>() {};
         return ((ApiResultList<SecondMarketItem>) api.fetchObject("secondarymarket", getQueryParameters(query), reference)).getPayload();
     }
 
