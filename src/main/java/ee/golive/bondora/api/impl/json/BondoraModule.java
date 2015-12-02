@@ -17,16 +17,29 @@
 package ee.golive.bondora.api.impl.json;
 
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import ee.golive.bondora.api.*;
+import ee.golive.bondora.api.domain.*;
+import ee.golive.bondora.api.domain.requests.BidRequest;
+import ee.golive.bondora.api.domain.requests.SecondMarketBuyRequest;
+import ee.golive.bondora.api.domain.requests.SecondMarketSaleRequest;
+import ee.golive.bondora.api.domain.results.ApiError;
+import ee.golive.bondora.api.domain.results.ApiResult;
+import ee.golive.bondora.api.domain.results.ApiResultList;
+import ee.golive.bondora.api.domain.results.ApiResultSingle;
+import ee.golive.bondora.api.impl.CustomDateDeseralizer;
+
+import java.util.Date;
 
 public class BondoraModule extends SimpleModule {
 
     public BondoraModule() {
         super("BondoraModule");
+        addDeserializer(Date.class, new CustomDateDeseralizer());
+
     }
 
     @Override
     public void setupModule(SetupContext context) {
+        super.setupModule(context);
         context.setMixInAnnotations(Auction.class, AuctionMixin.class);
         context.setMixInAnnotations(ApiError.class, ApiErrorMixin.class);
         context.setMixInAnnotations(ApiResultSingle.class, ApiResultSingleMixin.class);
@@ -34,7 +47,18 @@ public class BondoraModule extends SimpleModule {
         context.setMixInAnnotations(ApiResultList.class, ApiResultListMixin.class);
         context.setMixInAnnotations(BidRequest.class, BidRequestMixin.class);
         context.setMixInAnnotations(BidSummary.class, BidSummaryMixin.class);
-        context.setMixInAnnotations(UserOrganization.class, UserOrganizationMixin.class);
-        context.setMixInAnnotations(SecondMarketItem.class, SecondMarketItemMixin.class);
+        context.setMixInAnnotations(SecondaryMarketItem.class, SecondMarketItemMixin.class);
+        context.setMixInAnnotations(AccessToken.class, AccessTokenMixin.class);
+        context.setMixInAnnotations(MyAccountBalance.class, MyAccountBalanceMixin.class);
+        context.setMixInAnnotations(MyInvestmentItem.class, MyInvestmentItemMixin.class);
+        context.setMixInAnnotations(DebtManagementEvent.class, DebtManagementEventMixin.class);
+        context.setMixInAnnotations(LoanTransfer.class, LoanTransferMixin.class);
+        context.setMixInAnnotations(ScheduledPayment.class, ScheduledPaymentMixin.class);
+        context.setMixInAnnotations(LoanPartDetails.class, LoanPartDetailsMixin.class);
+        context.setMixInAnnotations(SecondMarketBuyRequest.class, SecondMarketBuyRequestMixin.class);
+        context.setMixInAnnotations(SecondMarketSell.class, SecondMarketSellMixin.class);
+        context.setMixInAnnotations(SecondMarketSaleRequest.class, SecondMarketSaleRequestMixin.class);
+        context.setMixInAnnotations(SecondMarketSaleResponse.class, SecondMarketSaleResponseMixin.class);
+        context.setMixInAnnotations(SecondaryMarketItemSummary.class, SecondaryMarketItemSummaryMixin.class);
     }
 }

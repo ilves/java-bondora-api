@@ -14,21 +14,12 @@
  * limitations under the License.
  */
 
-package ee.golive.bondora.api.impl.json;
+package ee.golive.bondora.api.operations;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import ee.golive.bondora.api.domain.Bid;
-
-import java.util.List;
-
-@JsonIgnoreProperties(ignoreUnknown = true)
-abstract class BidRequestMixin extends BondoraObjectMixin {
-
-    @JsonProperty("OrganizationId")
-    private String organizationId;
-
-    @JsonProperty("Bids")
-    private List<Bid> bids;
-
+public interface OAuthOperations {
+    String getAuthUrl(String[] scope);
+    String getAuthUrl(String[] scope, String redirectUri);
+    String getAuthUrl(String[] scope, String redirectUri, String state);
+    String getAccessToken(String code);
+    String getAccessToken(String code, String redirectUri);
 }

@@ -16,9 +16,15 @@
 
 package ee.golive.bondora.api;
 
+import ee.golive.bondora.api.impl.BondoraImpl;
+import ee.golive.bondora.api.operations.AccountOperations;
+import ee.golive.bondora.api.operations.AuctionOperations;
+import ee.golive.bondora.api.operations.OAuthOperations;
+import ee.golive.bondora.api.operations.SecondaryMarketOperations;
+
 /**
  * Interface specifying a basic set of operations for interacting with Bondora.
- * Implemented by {@link ee.golive.bondora.api.impl.BondoraTemplate}.
+ * Implemented by {@link BondoraImpl}.
  * @author Taavi Ilves
  */
 public interface Bondora {
@@ -37,13 +43,33 @@ public interface Bondora {
 
     /**
      * API for working with user related operations.
-     * @return {@link UserOperations}
+     * @return {@link AccountOperations}
      */
-    UserOperations getUserOperations();
+    AccountOperations getAccountOperations();
+
+    /**
+     * API for working with Oauth related operations.
+     * @return {@link OAuthOperations}
+     */
+    OAuthOperations getOauthOperations();
+
+    /**
+     * Sets Bondora api configuration
+     * @param config configuration object
+     */
+    void setConfig(BondoraConfig config);
+
+    BondoraConfig getConfig();
 
     /**
      * Sets authentication token
      * @param token authentication token
      */
     void setAccessToken(String token);
+
+    /**
+     * Returns access token
+     * @return access token
+     */
+    String getAccessToken();
 }

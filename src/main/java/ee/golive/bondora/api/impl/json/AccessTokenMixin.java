@@ -18,17 +18,16 @@ package ee.golive.bondora.api.impl.json;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import ee.golive.bondora.api.domain.Bid;
-
-import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class BidRequestMixin extends BondoraObjectMixin {
+abstract class AccessTokenMixin {
 
-    @JsonProperty("OrganizationId")
-    private String organizationId;
+    @JsonProperty("access_token")
+    private String accessToken;
 
-    @JsonProperty("Bids")
-    private List<Bid> bids;
+    @JsonProperty("scope")
+    private String scope;
 
+    @JsonProperty("token_type")
+    private String tokenType;
 }

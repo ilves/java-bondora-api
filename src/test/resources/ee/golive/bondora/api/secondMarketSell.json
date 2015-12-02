@@ -1,0 +1,27 @@
+{
+  "Payload": [
+    {
+      "Id": "6dfb42e0-9eed-48c8-8937-30a4047f0c14",
+      "LoanPartId": "13618f61-848b-47f7-913a-f1b533203ab2",
+      "DesiredDiscountRate": 3
+    },
+    {
+      "Id": "6dfb42e0-9eed-48c8-8937-30a4047f0c14",
+      "LoanPartId": "13618f61-848b-47f7-913a-f1b533203ab2",
+      "DesiredDiscountRate": 3
+    }
+  ],
+  "Success": true,
+  "Errors": [
+    {
+      "Code": 1,
+      "Message": "sample string 2",
+      "Details": "sample string 3"
+    },
+    {
+      "Code": 1,
+      "Message": "sample string 2",
+      "Details": "sample string 3"
+    }
+  ]
+}

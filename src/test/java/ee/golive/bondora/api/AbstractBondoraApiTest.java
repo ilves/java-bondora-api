@@ -16,30 +16,36 @@
 
 package ee.golive.bondora.api;
 
-import ee.golive.bondora.api.impl.BondoraTemplate;
+import ee.golive.bondora.api.impl.BondoraImpl;
 import org.junit.Before;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.test.web.client.MockRestServiceServer;
+import org.springframework.web.client.RestTemplate;
 
 public class AbstractBondoraApiTest {
 
-    protected BondoraTemplate bondora;
-    protected BondoraTemplate appBondora;
+    protected BondoraImpl bondora;
+    protected BondoraImpl appBondora;
     protected MockRestServiceServer mockServer;
     protected MockRestServiceServer appFacebookMockServer;
+    protected BondoraConfig config;
 
     @Before
     public void setup() {
+        config = new BondoraConfig();
+        config.setApiUrl("api/");
+        config.setAuthUrl("auth/");
+        config.setClientId("client_id");
+        config.setSecret("secret");
         bondora = createBondoraTemplate();
-        mockServer = MockRestServiceServer.createServer(bondora.getRestTemplate());
-
-        appBondora = new BondoraTemplate("");
-        appFacebookMockServer = MockRestServiceServer.createServer(appBondora.getRestTemplate());
+        mockServer = MockRestServiceServer.createServer((RestTemplate)bondora.getRestTemplate());
+        appBondora = new BondoraImpl(config);
+        appFacebookMockServer = MockRestServiceServer.createServer((RestTemplate)appBondora.getRestTemplate());
     }
 
-    protected BondoraTemplate createBondoraTemplate() {
-        return new BondoraTemplate("");
+    protected BondoraImpl createBondoraTemplate() {
+        return new BondoraImpl(config);
     }
 
     protected Resource jsonResource(String filename) {
@@ -47,6 +53,6 @@ public class AbstractBondoraApiTest {
     }
 
     protected String bondoraUrl(String path) {
-        return BondoraTemplate.API_URL + BondoraTemplate.API_VERSION + "/" + path;
+        return config.getApiUrl()+path;
     }
 }

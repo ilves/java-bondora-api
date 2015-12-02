@@ -14,21 +14,31 @@
  * limitations under the License.
  */
 
-package ee.golive.bondora.api.impl.json;
+package ee.golive.bondora.api.domain.results;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import ee.golive.bondora.api.domain.Bid;
+import ee.golive.bondora.api.domain.BondoraObject;
 
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-abstract class BidRequestMixin extends BondoraObjectMixin {
+public class ApiResult extends BondoraObject {
 
-    @JsonProperty("OrganizationId")
-    private String organizationId;
+    private boolean success;
 
-    @JsonProperty("Bids")
-    private List<Bid> bids;
+    private List<ApiError> errors;
 
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public List<ApiError> getErrors() {
+        return errors;
+    }
+
+    public void setErrors(List<ApiError> errors) {
+        this.errors = errors;
+    }
 }

@@ -16,6 +16,9 @@
 
 package ee.golive.bondora.api;
 
+import ee.golive.bondora.api.domain.Auction;
+import ee.golive.bondora.api.domain.Bid;
+import ee.golive.bondora.api.domain.BidSummary;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 
@@ -33,11 +36,11 @@ public class AuctionTemplateTest extends AbstractBondoraApiTest {
 
     @Test
     public void getAuction() throws Exception {
-        mockServer.expect(requestTo(bondoraUrl("auction/ca0182f1-fbcc-4b9d-a685-ee2bbdebe97b")))
+        String id = "ca0182f1-fbcc-4b9d-a685-ee2bbdebe97b";
+        mockServer.expect(requestTo(bondoraUrl("auction/" + id)))
                 .andExpect(method(GET))
                 .andRespond(withSuccess(jsonResource("auction"), MediaType.APPLICATION_JSON));
-
-        Auction auction = bondora.getAuctionOperations().getAuction("ca0182f1-fbcc-4b9d-a685-ee2bbdebe97b");
+        Auction auction = bondora.getAuctionOperations().getAuction(id);
         assertFoundJohnSmithLoan(auction);
     }
 
@@ -85,7 +88,7 @@ public class AuctionTemplateTest extends AbstractBondoraApiTest {
     public void addBid() throws Exception {
         mockServer.expect(requestTo(bondoraUrl("bid")))
                 .andExpect(method(POST))
-                .andRespond(withSuccess(jsonResource("bidResultSuccess"), MediaType.APPLICATION_JSON));
+                .andRespond(withSuccess(jsonResource("success"), MediaType.APPLICATION_JSON));
 
         List<Bid> bids = new LinkedList<>();
         bids.add(new Bid("50000", 50.0, 10.0));

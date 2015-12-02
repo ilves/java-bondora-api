@@ -16,6 +16,7 @@
 
 package ee.golive.bondora.api.impl;
 
+import ee.golive.bondora.api.Bondora;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;
@@ -26,21 +27,19 @@ import java.io.IOException;
 
 public class TokenInterceptor implements ClientHttpRequestInterceptor {
 
-    private BondoraTemplate.AccessToken token;
+    private Bondora api;
 
-    public TokenInterceptor(BondoraTemplate.AccessToken token) {
-        this.token = token;
+    public TokenInterceptor(Bondora api) {
+        this.api = api;
     }
 
     @Override
-    public ClientHttpResponse intercept(
-            HttpRequest request, byte[] body, ClientHttpRequestExecution execution)
-            throws IOException {
-        HttpHeaders headers = request.getHeaders();
-        if (token.getToken().length() > 0) {
-            headers.add("Authorization", "Bearer " + token.getToken());
+    public ClientHttpResponse intercept(HttpRequest req, byte[] bdy, ClientHttpRequestExecution ex) throws IOException {
+        HttpHeaders headers = req.getHeaders();
+        if (!req.getURI().getPath().contains("oauth/access_token")) {
+            headers.add("Authorization", "Bearer " + api.getAccessToken());
         }
-        return execution.execute(request, body);
+        return ex.execute(req, bdy);
     }
 
 }

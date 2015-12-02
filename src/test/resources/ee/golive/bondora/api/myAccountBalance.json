@@ -1,0 +1,21 @@
+{
+  "Payload": {
+    "Balance": 1.0,
+    "Reserved": 2.0,
+    "BidRequestAmount": 3.0,
+    "TotalAvailable": -4.0
+  },
+  "Success": true,
+  "Errors": [
+    {
+      "Code": 1,
+      "Message": "sample string 2",
+      "Details": "sample string 3"
+    },
+    {
+      "Code": 1,
+      "Message": "sample string 2",
+      "Details": "sample string 3"
+    }
+  ]
+}

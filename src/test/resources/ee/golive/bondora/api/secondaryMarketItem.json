@@ -1,0 +1,26 @@
+{
+  "Payload": {
+    "Id": "2aed8858-90e3-4b4b-ac02-3f35da60bbc6",
+    "Number": 2,
+    "StartDate": "2015-12-02T13:44:07.7952839+02:00",
+    "PlannedCloseDate": "2015-12-02T13:44:07.7952839+02:00",
+    "ActualCloseDate": "2015-12-02T13:44:07.7952839+02:00",
+    "UserCancelledOn": "2015-12-02T13:44:07.7952839+02:00",
+    "LoanPart_id": "3fc3bafa-aecc-4010-895c-3669f6624711",
+    "DesiredDiscountRate": 700.0,
+    "StatusCode": 0
+  },
+  "Success": true,
+  "Errors": [
+    {
+      "Code": 1,
+      "Message": "sample string 2",
+      "Details": "sample string 3"
+    },
+    {
+      "Code": 1,
+      "Message": "sample string 2",
+      "Details": "sample string 3"
+    }
+  ]
+}

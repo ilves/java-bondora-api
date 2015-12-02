@@ -18,17 +18,21 @@ package ee.golive.bondora.api.impl.json;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import ee.golive.bondora.api.domain.Bid;
 
-import java.util.List;
+import java.math.BigDecimal;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class BidRequestMixin extends BondoraObjectMixin {
+abstract class MyAccountBalanceMixin extends BondoraObjectMixin {
 
-    @JsonProperty("OrganizationId")
-    private String organizationId;
+    @JsonProperty("Balance")
+    private BigDecimal balance;
 
-    @JsonProperty("Bids")
-    private List<Bid> bids;
+    @JsonProperty("Reserved")
+    private BigDecimal reserved;
 
+    @JsonProperty("BidRequestAmount")
+    private BigDecimal bidRequestAmount;
+
+    @JsonProperty("TotalAvailable")
+    private BigDecimal totalAvailable;
 }

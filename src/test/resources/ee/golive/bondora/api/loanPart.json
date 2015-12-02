@@ -1,0 +1,108 @@
+{
+  "Payload": {
+    "LoanPartId": "422038e9-13e1-4f83-9e33-964611e11336",
+    "Amount": 2.0,
+    "AuctionId": "aac7f154-14fd-48e6-aae6-fa938c5f50de",
+    "AuctionName": "sample string 4",
+    "AuctionNumber": 5,
+    "AuctionBidNumber": 6,
+    "Country": "sample string 7",
+    "CreditScore": 1.1,
+    "Rating": "sample string 8",
+    "InitialInterest": 9.0,
+    "Interest": 10.0,
+    "UseOfLoan": 0,
+    "IncomeVerificationStatus": 1,
+    "LoanId": "fe75e479-845c-4060-8f53-be29422e8589",
+    "LoanStatusCode": 12,
+    "UserName": "sample string 13",
+    "Gender": 0,
+    "DateOfBirth": "2015-12-02T13:44:07.5465689+02:00",
+    "SignedDate": "2015-12-02T13:44:07.5475928+02:00",
+    "ReScheduledOn": "2015-12-02T13:44:07.5475928+02:00",
+    "DebtOccuredOn": "2015-12-02T13:44:07.5475928+02:00",
+    "DebtOccuredOnForSecondary": "2015-12-02T13:44:07.5475928+02:00",
+    "LoanDuration": 14,
+    "NextPaymentNr": 15,
+    "NextPaymentDate": "2015-12-02T13:44:07.548593+02:00",
+    "NextPaymentSum": 1.0,
+    "NrOfScheduledPayments": 16,
+    "LastPaymentDate": "2015-12-02T13:44:07.5490427+02:00",
+    "PrincipalRepaid": 18.0,
+    "InterestRepaid": 19.0,
+    "LateAmountPaid": 20.0,
+    "PrincipalRemaining": -16.0,
+    "PrincipalLateAmount": 21.0,
+    "InterestLateAmount": 22.0,
+    "PenaltyLateAmount": 23.0,
+    "LateAmountTotal": 66.0,
+    "RepaidPrincipalCurrentOwner": 24.0,
+    "RepaidInterestsCurrentOwner": 25.0,
+    "LateChargesPaidCurrentOwner": 26.0,
+    "RepaidTotalCurrentOwner": 27.0,
+    "TotalRepaid": 28.0,
+    "DebtManagmentEvents": [
+      {
+        "CreatedOn": "2015-12-02T13:44:07.5509187+02:00",
+        "EventType": 1,
+        "Description": "sample string 2"
+      },
+      {
+        "CreatedOn": "2015-12-02T13:44:07.5509187+02:00",
+        "EventType": 1,
+        "Description": "sample string 2"
+      }
+    ],
+    "LoanTransfers": [
+      {
+        "Date": "2015-12-02T13:44:07.5519576+02:00",
+        "PrincipalAmount": 2.0,
+        "InterestAmount": 3.0,
+        "InterestAmountCarriedOver": 4.0,
+        "PenaltyAmountCarriedOver": 5.0,
+        "TotalAmount": 6.0
+      },
+      {
+        "Date": "2015-12-02T13:44:07.5519576+02:00",
+        "PrincipalAmount": 2.0,
+        "InterestAmount": 3.0,
+        "InterestAmountCarriedOver": 4.0,
+        "PenaltyAmountCarriedOver": 5.0,
+        "TotalAmount": 6.0
+      }
+    ],
+    "ScheduledPayments": [
+      {
+        "ScheduledDate": "2015-12-02T13:44:07.553431+02:00",
+        "PrincipalAmount": 3.0,
+        "PrincipalAmountLeft": 4.0,
+        "InterestAmount": 5.0,
+        "IntrestAmountCarriedOver": 6.0,
+        "PenaltyAmountCarriedOver": 7.0,
+        "TotalAmount": 21.0
+      },
+      {
+        "ScheduledDate": "2015-12-02T13:44:07.553431+02:00",
+        "PrincipalAmount": 3.0,
+        "PrincipalAmountLeft": 4.0,
+        "InterestAmount": 5.0,
+        "IntrestAmountCarriedOver": 6.0,
+        "PenaltyAmountCarriedOver": 7.0,
+        "TotalAmount": 21.0
+      }
+    ]
+  },
+  "Success": true,
+  "Errors": [
+    {
+      "Code": 1,
+      "Message": "sample string 2",
+      "Details": "sample string 3"
+    },
+    {
+      "Code": 1,
+      "Message": "sample string 2",
+      "Details": "sample string 3"
+    }
+  ]
+}

@@ -14,21 +14,21 @@
  * limitations under the License.
  */
 
-package ee.golive.bondora.api.impl.json;
+package ee.golive.bondora.api.domain.requests;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import ee.golive.bondora.api.domain.Bid;
+import ee.golive.bondora.api.domain.BondoraObject;
 
+import java.util.LinkedList;
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-abstract class BidRequestMixin extends BondoraObjectMixin {
+public class SecondMarketBuyRequest extends BondoraObject {
+    private List<String> itemIds = new LinkedList<>();
 
-    @JsonProperty("OrganizationId")
-    private String organizationId;
+    public List<String> getItemIds() {
+        return itemIds;
+    }
 
-    @JsonProperty("Bids")
-    private List<Bid> bids;
-
+    public void setItemIds(List<String> itemIds) {
+        this.itemIds = itemIds;
+    }
 }

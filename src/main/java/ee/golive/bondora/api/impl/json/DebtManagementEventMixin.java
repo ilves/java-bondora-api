@@ -18,17 +18,20 @@ package ee.golive.bondora.api.impl.json;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import ee.golive.bondora.api.domain.Bid;
+import ee.golive.bondora.api.domain.LoanDebtManagementEventType;
 
-import java.util.List;
+import java.util.Date;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class BidRequestMixin extends BondoraObjectMixin {
+abstract class DebtManagementEventMixin extends BondoraObjectMixin {
 
-    @JsonProperty("OrganizationId")
-    private String organizationId;
+    @JsonProperty("CreatedOn")
+    private Date createdOn;
 
-    @JsonProperty("Bids")
-    private List<Bid> bids;
+    @JsonProperty("EventType")
+    private LoanDebtManagementEventType eventType;
+
+    @JsonProperty("Description")
+    private String description;
 
 }

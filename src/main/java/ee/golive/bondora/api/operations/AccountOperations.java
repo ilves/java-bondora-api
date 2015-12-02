@@ -14,21 +14,14 @@
  * limitations under the License.
  */
 
-package ee.golive.bondora.api.impl.json;
+package ee.golive.bondora.api.operations;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import ee.golive.bondora.api.domain.Bid;
+import ee.golive.bondora.api.domain.MyAccountBalance;
+import ee.golive.bondora.api.domain.MyInvestmentItem;
 
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-abstract class BidRequestMixin extends BondoraObjectMixin {
-
-    @JsonProperty("OrganizationId")
-    private String organizationId;
-
-    @JsonProperty("Bids")
-    private List<Bid> bids;
-
+public interface AccountOperations {
+    MyAccountBalance getAccountBalance();
+    List<MyInvestmentItem> getInvestments();
 }
