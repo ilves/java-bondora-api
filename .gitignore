@@ -1,4 +1,4 @@
 # Created by .gitignore support plugin (hsz.mobi)
 .idea
-HelloWorld.iml
 target
+java-bondora-api.iml
