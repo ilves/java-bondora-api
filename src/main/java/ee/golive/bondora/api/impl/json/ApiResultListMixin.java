@@ -27,4 +27,7 @@ abstract class ApiResultListMixin<T> extends ApiResultMixin {
     @JsonProperty("Payload")
     private List<T> payload;
 
+    @JsonProperty("TotalCount")
+    private Integer totalCount;
+
 }

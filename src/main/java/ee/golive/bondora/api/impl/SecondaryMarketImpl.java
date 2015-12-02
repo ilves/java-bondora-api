@@ -30,8 +30,6 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
-import java.util.List;
-
 public class SecondaryMarketImpl implements SecondaryMarketOperations {
 
     private BondoraImpl api;
@@ -41,46 +39,46 @@ public class SecondaryMarketImpl implements SecondaryMarketOperations {
     }
 
     @Override
-    public SecondaryMarketItemSummary getItem(String id) {
+    public ApiResultSingle<SecondaryMarketItemSummary> getItem(String id) {
         ParameterizedTypeReference<ApiResultSingle<SecondaryMarketItemSummary>> reference
                 = new ParameterizedTypeReference<ApiResultSingle<SecondaryMarketItemSummary>>() {};
-        return (api.fetchObject(api.apiUrl("secondarymarket/" + id), reference)).getPayload();
+        return (api.fetchObject(api.apiUrl("secondarymarket/" + id), reference));
     }
 
     @Override
-    public List<SecondaryMarketItem> getItems() {
+    public ApiResultList<SecondaryMarketItem> getItems() {
         return getItems(null);
     }
 
     @Override
-    public List<SecondaryMarketItem> getItems(String query) {
+    public ApiResultList<SecondaryMarketItem> getItems(String query) {
         ParameterizedTypeReference<ApiResultList<SecondaryMarketItem>> reference
                 = new ParameterizedTypeReference<ApiResultList<SecondaryMarketItem>>() {};
-        return (api.fetchObject(api.apiUrl("secondarymarket"), getQueryParameters(query), reference)).getPayload();
+        return (api.fetchObject(api.apiUrl("secondarymarket"), getQueryParameters(query), reference));
     }
 
     @Override
-    public LoanPartDetails getLoanPart(String id) {
+    public ApiResultSingle<LoanPartDetails> getLoanPart(String id) {
         ParameterizedTypeReference<ApiResultSingle<LoanPartDetails>> reference
                 = new ParameterizedTypeReference<ApiResultSingle<LoanPartDetails>>() {};
-        return (api.fetchObject(api.apiUrl("secondarymarket/loanpart/" + id), reference)).getPayload();
+        return (api.fetchObject(api.apiUrl("secondarymarket/loanpart/" + id), reference));
     }
 
     @Override
-    public boolean buy(SecondMarketBuyRequest request) {
-        return api.postObject(api.apiUrl("secondarymarket/buy"), request, ApiResult.class).isSuccess();
+    public ApiResult buy(SecondMarketBuyRequest request) {
+        return api.postObject(api.apiUrl("secondarymarket/buy"), request, ApiResult.class);
     }
 
     @Override
-    public List<SecondMarketSaleResponse> sell(SecondMarketSaleRequest request) {
+    public ApiResultList<SecondMarketSaleResponse> sell(SecondMarketSaleRequest request) {
         ParameterizedTypeReference<ApiResultList<SecondMarketSaleResponse>> reference
                 = new ParameterizedTypeReference<ApiResultList<SecondMarketSaleResponse>>() {};
-        return (api.postObject(api.apiUrl("secondarymarket/sell"), request, reference)).getPayload();
+        return (api.postObject(api.apiUrl("secondarymarket/sell"), request, reference));
     }
 
     @Override
-    public boolean cancel(String id) {
-        return api.postObject(api.apiUrl("secondarymarket/cancel/" + id), ApiResult.class).isSuccess();
+    public ApiResult cancel(String id) {
+        return api.postObject(api.apiUrl("secondarymarket/cancel/" + id), ApiResult.class);
     }
 
     private MultiValueMap<String, String> getQueryParameters(String query) {

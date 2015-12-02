@@ -21,6 +21,7 @@ import java.util.List;
 public class ApiResultList<T> extends ApiResult {
 
     private List<T> payload;
+    private Integer totalCount;
 
     public List<T> getPayload() {
         return payload;
@@ -28,5 +29,13 @@ public class ApiResultList<T> extends ApiResult {
 
     public void setPayload(List<T> payload) {
         this.payload = payload;
+    }
+
+    public Integer getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(Integer totalCount) {
+        this.totalCount = totalCount;
     }
 }

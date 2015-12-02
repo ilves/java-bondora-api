@@ -17,19 +17,16 @@
 package ee.golive.bondora.api;
 
 import ee.golive.bondora.api.domain.Auction;
-import ee.golive.bondora.api.domain.Bid;
 import ee.golive.bondora.api.domain.BidSummary;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.springframework.http.HttpMethod.GET;
-import static org.springframework.http.HttpMethod.POST;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.*;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
 public class AuctionTemplateTest extends AbstractBondoraApiTest {
@@ -40,7 +37,7 @@ public class AuctionTemplateTest extends AbstractBondoraApiTest {
         mockServer.expect(requestTo(bondoraUrl("auction/" + id)))
                 .andExpect(method(GET))
                 .andRespond(withSuccess(jsonResource("auction"), MediaType.APPLICATION_JSON));
-        Auction auction = bondora.getAuctionOperations().getAuction(id);
+        Auction auction = bondora.getAuctionOperations().getAuction(id).getPayload();
         assertFoundJohnSmithLoan(auction);
     }
 
@@ -50,7 +47,7 @@ public class AuctionTemplateTest extends AbstractBondoraApiTest {
                 .andExpect(method(GET))
                 .andRespond(withSuccess(jsonResource("auctions"), MediaType.APPLICATION_JSON));
 
-        List<Auction> auctions = bondora.getAuctionOperations().getAuctions();
+        List<Auction> auctions = bondora.getAuctionOperations().getAuctions().getPayload();
         assertEquals(2, auctions.size());
         assertFoundJohnSmithLoan(auctions.get(0));
     }
@@ -70,7 +67,7 @@ public class AuctionTemplateTest extends AbstractBondoraApiTest {
                 .andExpect(method(GET))
                 .andRespond(withSuccess(jsonResource("bids"), MediaType.APPLICATION_JSON));
 
-        List<BidSummary> bids = bondora.getAuctionOperations().getBids();
+        List<BidSummary> bids = bondora.getAuctionOperations().getBids().getPayload();
         assertEquals(3, bids.size());
     }
 
@@ -80,21 +77,10 @@ public class AuctionTemplateTest extends AbstractBondoraApiTest {
                 .andExpect(method(GET))
                 .andRespond(withSuccess(jsonResource("bids"), MediaType.APPLICATION_JSON));
 
-        List<BidSummary> bids = bondora.getAuctionOperations().getBids("bidStatus=1&startDate=2011-01-01");
+        List<BidSummary> bids = bondora.getAuctionOperations().getBids("bidStatus=1&startDate=2011-01-01").getPayload();
         assertEquals(3, bids.size());
     }
 
-    @Test
-    public void addBid() throws Exception {
-        mockServer.expect(requestTo(bondoraUrl("bid")))
-                .andExpect(method(POST))
-                .andRespond(withSuccess(jsonResource("success"), MediaType.APPLICATION_JSON));
-
-        List<Bid> bids = new LinkedList<>();
-        bids.add(new Bid("50000", 50.0, 10.0));
-        boolean bidResult = bondora.getAuctionOperations().bid("12345", bids);
-        assertTrue(bidResult);
-    }
 
     private void assertFoundJohnSmithLoan(Auction auction) {
         assertEquals("ca0182f1-fbcc-4b9d-a685-ee2bbdebe97b", auction.getLoanId());

@@ -1,10 +1,12 @@
 package ee.golive.bondora.api.impl.json;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 abstract class ScheduledPaymentMixin extends BondoraObjectMixin {
 
     @JsonProperty("ScheduledDate")

@@ -17,10 +17,43 @@
 package ee.golive.bondora.api.impl.json;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import ee.golive.bondora.api.domain.ApiAuctionBidRequestStatus;
+import ee.golive.bondora.api.domain.ApiBidFailureReason;
+
+import java.math.BigDecimal;
+import java.util.Date;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 abstract class BidSummaryMixin extends BondoraObjectMixin {
 
+    @JsonProperty("Id")
+    private String id;
 
+    @JsonProperty("AuctionId")
+    private String auctionId;
 
+    @JsonProperty("RequestedBidAmount")
+    private BigDecimal requestedBidAmount;
+
+    @JsonProperty("ActualBidAmount")
+    private BigDecimal actualBidAmount;
+
+    @JsonProperty("RequestedBidMinimumLimit")
+    private BigDecimal requestedBidMinimumLimit;
+
+    @JsonProperty("BidRequestedDate")
+    private Date bidRequestedDate;
+
+    @JsonProperty("BidProcessedDate")
+    private Date bidProcessedDate;
+
+    @JsonProperty("IsRequestBeingProcessed")
+    private Boolean isRequestBeingProcessed;
+
+    @JsonProperty("StatusCode")
+    private ApiAuctionBidRequestStatus statusCode;
+
+    @JsonProperty("FailureReason")
+    private ApiBidFailureReason failureReason;
 }

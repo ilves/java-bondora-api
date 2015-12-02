@@ -16,15 +16,15 @@
 
 package ee.golive.bondora.api.domain;
 
+import java.math.BigDecimal;
+
 public class Bid extends BondoraObject {
 
     private String auctionId;
+    private BigDecimal amount;
+    private BigDecimal minAmount;
 
-    private double amount;
-
-    private double minAmount;
-
-    public Bid(String auctionId, double amount, double minAmount) {
+    public Bid(String auctionId, BigDecimal amount, BigDecimal minAmount) {
         this.setAuctionId(auctionId);
         this.setAmount(amount);
         this.setMinAmount(minAmount);
@@ -38,19 +38,19 @@ public class Bid extends BondoraObject {
         this.auctionId = auctionId;
     }
 
-    public double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
-    public double getMinAmount() {
+    public BigDecimal getMinAmount() {
         return minAmount;
     }
 
-    public void setMinAmount(double minAmount) {
+    public void setMinAmount(BigDecimal minAmount) {
         this.minAmount = minAmount;
     }
 }

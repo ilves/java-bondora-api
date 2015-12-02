@@ -22,15 +22,16 @@ import ee.golive.bondora.api.domain.SecondaryMarketItem;
 import ee.golive.bondora.api.domain.SecondaryMarketItemSummary;
 import ee.golive.bondora.api.domain.requests.SecondMarketBuyRequest;
 import ee.golive.bondora.api.domain.requests.SecondMarketSaleRequest;
-
-import java.util.List;
+import ee.golive.bondora.api.domain.results.ApiResult;
+import ee.golive.bondora.api.domain.results.ApiResultList;
+import ee.golive.bondora.api.domain.results.ApiResultSingle;
 
 public interface SecondaryMarketOperations {
-    SecondaryMarketItemSummary getItem(String id);
-    List<SecondaryMarketItem> getItems();
-    List<SecondaryMarketItem> getItems(String query);
-    LoanPartDetails getLoanPart(String id);
-    boolean buy(SecondMarketBuyRequest request);
-    List<SecondMarketSaleResponse> sell(SecondMarketSaleRequest request);
-    boolean cancel(String id);
+    ApiResultSingle<SecondaryMarketItemSummary> getItem(String id);
+    ApiResultList<SecondaryMarketItem> getItems();
+    ApiResultList<SecondaryMarketItem> getItems(String query);
+    ApiResultSingle<LoanPartDetails> getLoanPart(String id);
+    ApiResult buy(SecondMarketBuyRequest request);
+    ApiResultList<SecondMarketSaleResponse> sell(SecondMarketSaleRequest request);
+    ApiResult cancel(String id);
 }

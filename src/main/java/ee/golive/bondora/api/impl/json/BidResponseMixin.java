@@ -22,7 +22,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.math.BigDecimal;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class BidMixin extends BondoraObjectMixin {
+abstract class BidResponseMixin extends BondoraObjectMixin {
+
+    @JsonProperty("Id")
+    private String id;
 
     @JsonProperty("AuctionId")
     private String auctionId;

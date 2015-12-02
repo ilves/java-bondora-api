@@ -17,18 +17,20 @@
 package ee.golive.bondora.api.operations;
 
 import ee.golive.bondora.api.domain.Auction;
-import ee.golive.bondora.api.domain.Bid;
+import ee.golive.bondora.api.domain.BidResponse;
 import ee.golive.bondora.api.domain.BidSummary;
-
-import java.util.List;
+import ee.golive.bondora.api.domain.requests.BidRequest;
+import ee.golive.bondora.api.domain.results.ApiResult;
+import ee.golive.bondora.api.domain.results.ApiResultList;
+import ee.golive.bondora.api.domain.results.ApiResultSingle;
 
 public interface AuctionOperations {
-    Auction getAuction(String id);
-    List<Auction> getAuctions();
-    List<Auction> getAuctions(String query);
-    BidSummary getBid(String id);
-    List<BidSummary> getBids();
-    List<BidSummary> getBids(String query);
-    boolean bid(String organizationId, List<Bid> bids);
-    boolean cancelBid(String id);
+    ApiResultSingle<Auction> getAuction(String id);
+    ApiResultList<Auction> getAuctions();
+    ApiResultList<Auction> getAuctions(String query);
+    ApiResultSingle<BidSummary> getBid(String id);
+    ApiResultList<BidSummary> getBids();
+    ApiResultList<BidSummary> getBids(String query);
+    ApiResultList<BidResponse> bid(BidRequest request);
+    ApiResult cancelBid(String id);
 }

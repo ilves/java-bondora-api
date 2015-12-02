@@ -25,10 +25,6 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 abstract class BidRequestMixin extends BondoraObjectMixin {
 
-    @JsonProperty("OrganizationId")
-    private String organizationId;
-
     @JsonProperty("Bids")
     private List<Bid> bids;
-
 }

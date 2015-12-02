@@ -1,9 +1,9 @@
+# Under development, DO NOT USE IN PRODUCTION YET!
+# If you want help, ask for mor information using issues or create pull request
+
 # Bondora SDK for JAVA
 
-
 This repository contains the open source JAVA SDK that allows you to access the Bondora API from your JAVA app.
-
-
 
 ## Installation
 

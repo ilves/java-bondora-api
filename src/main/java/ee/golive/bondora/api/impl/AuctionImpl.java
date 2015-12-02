@@ -17,18 +17,16 @@
 package ee.golive.bondora.api.impl;
 
 import ee.golive.bondora.api.domain.Auction;
-import ee.golive.bondora.api.domain.Bid;
+import ee.golive.bondora.api.domain.BidResponse;
 import ee.golive.bondora.api.domain.BidSummary;
-import ee.golive.bondora.api.operations.AuctionOperations;
 import ee.golive.bondora.api.domain.requests.BidRequest;
 import ee.golive.bondora.api.domain.results.ApiResult;
 import ee.golive.bondora.api.domain.results.ApiResultList;
 import ee.golive.bondora.api.domain.results.ApiResultSingle;
+import ee.golive.bondora.api.operations.AuctionOperations;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-
-import java.util.List;
 
 public class AuctionImpl implements AuctionOperations {
 
@@ -39,52 +37,49 @@ public class AuctionImpl implements AuctionOperations {
     }
 
     @Override
-    public List<Auction> getAuctions() {
+    public ApiResultList<Auction> getAuctions() {
         return getAuctions(null);
     }
 
     @Override
-    public List<Auction> getAuctions(String query) {
+    public ApiResultList<Auction> getAuctions(String query) {
         ParameterizedTypeReference<ApiResultList<Auction>> reference =
                 new ParameterizedTypeReference<ApiResultList<Auction>>() {};
-        return (api.fetchObject(api.apiUrl("auctions"), getQueryParameters(query), reference)).getPayload();
+        return (api.fetchObject(api.apiUrl("auctions"), getQueryParameters(query), reference));
     }
 
     @Override
-    public BidSummary getBid(String id) {
+    public ApiResultSingle<BidSummary> getBid(String id) {
         return null;
     }
 
     @Override
-    public Auction getAuction(String id) {
+    public ApiResultSingle<Auction> getAuction(String id) {
         ParameterizedTypeReference<ApiResultSingle<Auction>> reference =
                 new ParameterizedTypeReference<ApiResultSingle<Auction>>() {};
-        return (api.fetchObject(api.apiUrl("auction/" + id), reference)).getPayload();
+        return (api.fetchObject(api.apiUrl("auction/" + id), reference));
     }
 
     @Override
-    public boolean bid(String organizationId, List<Bid> bids) {
-        BidRequest request = new BidRequest();
-        request.setOrganizationId(organizationId);
-        request.setBids(bids);
-        return api.postObject(api.apiUrl("bid"), request, ApiResult.class).isSuccess();
+    public ApiResultList<BidResponse> bid(BidRequest request) {
+        return null;
     }
 
     @Override
-    public boolean cancelBid(String id) {
-        return false;
+    public ApiResult cancelBid(String id) {
+        return null;
     }
 
     @Override
-    public List<BidSummary> getBids() {
+    public ApiResultList<BidSummary> getBids() {
         return getBids(null);
     }
 
     @Override
-    public List<BidSummary> getBids(String query) {
+    public ApiResultList<BidSummary> getBids(String query) {
         ParameterizedTypeReference<ApiResultList<BidSummary>> reference
                 = new ParameterizedTypeReference<ApiResultList<BidSummary>>() {};
-        return (api.fetchObject(api.apiUrl("bids"), getQueryParameters(query), reference)).getPayload();
+        return (api.fetchObject(api.apiUrl("bids"), getQueryParameters(query), reference));
     }
 
     private MultiValueMap<String, String> getQueryParameters(String query) {

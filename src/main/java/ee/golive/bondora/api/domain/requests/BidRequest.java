@@ -23,17 +23,7 @@ import java.util.List;
 
 public class BidRequest extends BondoraObject {
 
-    private String organizationId;
-
     private List<Bid> bids;
-
-    public String getOrganizationId() {
-        return organizationId;
-    }
-
-    public void setOrganizationId(String organizationId) {
-        this.organizationId = organizationId;
-    }
 
     public List<Bid> getBids() {
         return bids;

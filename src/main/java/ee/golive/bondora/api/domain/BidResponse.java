@@ -14,23 +14,46 @@
  * limitations under the License.
  */
 
-package ee.golive.bondora.api.impl.json;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+package ee.golive.bondora.api.domain;
 
 import java.math.BigDecimal;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-abstract class BidMixin extends BondoraObjectMixin {
+public class BidResponse extends BondoraObject {
 
-    @JsonProperty("AuctionId")
+    private String id;
     private String auctionId;
-
-    @JsonProperty("Amount")
     private BigDecimal amount;
-
-    @JsonProperty("MinAmount")
     private BigDecimal minAmount;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getAuctionId() {
+        return auctionId;
+    }
+
+    public void setAuctionId(String auctionId) {
+        this.auctionId = auctionId;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public BigDecimal getMinAmount() {
+        return minAmount;
+    }
+
+    public void setMinAmount(BigDecimal minAmount) {
+        this.minAmount = minAmount;
+    }
 }

@@ -14,23 +14,28 @@
  * limitations under the License.
  */
 
-package ee.golive.bondora.api.impl.json;
+package ee.golive.bondora.api.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 
-import java.math.BigDecimal;
+public class AuctionExtended extends Auction {
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-abstract class BidMixin extends BondoraObjectMixin {
+    private List<Liability> liabilities;
+    private List<Debt> depts;
 
-    @JsonProperty("AuctionId")
-    private String auctionId;
+    public List<Liability> getLiabilities() {
+        return liabilities;
+    }
 
-    @JsonProperty("Amount")
-    private BigDecimal amount;
+    public void setLiabilities(List<Liability> liabilities) {
+        this.liabilities = liabilities;
+    }
 
-    @JsonProperty("MinAmount")
-    private BigDecimal minAmount;
+    public List<Debt> getDepts() {
+        return depts;
+    }
 
+    public void setDepts(List<Debt> depts) {
+        this.depts = depts;
+    }
 }

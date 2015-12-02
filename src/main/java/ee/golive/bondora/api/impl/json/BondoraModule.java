@@ -34,7 +34,6 @@ public class BondoraModule extends SimpleModule {
     public BondoraModule() {
         super("BondoraModule");
         addDeserializer(Date.class, new CustomDateDeseralizer());
-
     }
 
     @Override
@@ -60,5 +59,9 @@ public class BondoraModule extends SimpleModule {
         context.setMixInAnnotations(SecondMarketSaleRequest.class, SecondMarketSaleRequestMixin.class);
         context.setMixInAnnotations(SecondMarketSaleResponse.class, SecondMarketSaleResponseMixin.class);
         context.setMixInAnnotations(SecondaryMarketItemSummary.class, SecondaryMarketItemSummaryMixin.class);
+        context.setMixInAnnotations(BidResponse.class, BidResponseMixin.class);
+        context.setMixInAnnotations(Liability.class, LiabilityMixin.class);
+        context.setMixInAnnotations(Debt.class, DeptMixin.class);
+        context.setMixInAnnotations(AuctionExtended.class, AuctionExtendedMixin.class);
     }
 }

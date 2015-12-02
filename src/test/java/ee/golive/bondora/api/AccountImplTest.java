@@ -39,7 +39,7 @@ public class AccountImplTest extends AbstractBondoraApiTest {
         mockServer.expect(requestTo(bondoraUrl("account/balance")))
                 .andExpect(method(GET))
                 .andRespond(withSuccess(jsonResource("myAccountBalance"), MediaType.APPLICATION_JSON));
-        MyAccountBalance balance = bondora.getAccountOperations().getAccountBalance();
+        MyAccountBalance balance = bondora.getAccountOperations().getAccountBalance().getPayload();
         assertEquals(BigDecimal.valueOf(1.0), balance.getBalance());
         assertEquals(BigDecimal.valueOf(2.0), balance.getReserved());
         assertEquals(BigDecimal.valueOf(3.0), balance.getBidRequestAmount());
@@ -51,7 +51,7 @@ public class AccountImplTest extends AbstractBondoraApiTest {
         mockServer.expect(requestTo(bondoraUrl("account/investments")))
                 .andExpect(method(GET))
                 .andRespond(withSuccess(jsonResource("myInvestments"), MediaType.APPLICATION_JSON));
-        List<MyInvestmentItem> investments = bondora.getAccountOperations().getInvestments();
+        List<MyInvestmentItem> investments = bondora.getAccountOperations().getInvestments().getPayload();
         assertEquals(2, investments.size());
         assertEquals("c4ffc8a5-ac36-4896-9381-b242f13996da", investments.get(1).getLoanPartId());
         assertEquals(AuctionPurpose.Health, investments.get(0).getUseOfLoan());

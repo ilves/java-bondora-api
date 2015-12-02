@@ -22,8 +22,7 @@ import java.util.List;
 
 public class ApiResult extends BondoraObject {
 
-    private boolean success;
-
+    private Boolean success;
     private List<ApiError> errors;
 
     public boolean isSuccess() {

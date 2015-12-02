@@ -39,7 +39,7 @@ public class SecondaryMarketImplTest extends AbstractBondoraApiTest {
         mockServer.expect(requestTo(bondoraUrl("secondarymarket")))
                 .andExpect(method(GET))
                 .andRespond(withSuccess(jsonResource("secondarymarket"), MediaType.APPLICATION_JSON));
-        List<SecondaryMarketItem> items = bondora.getSecondMarketOperations().getItems();
+        List<SecondaryMarketItem> items = bondora.getSecondMarketOperations().getItems().getPayload();
         assertEquals(2, items.size());
     }
 
@@ -49,7 +49,7 @@ public class SecondaryMarketImplTest extends AbstractBondoraApiTest {
         mockServer.expect(requestTo(bondoraUrl("secondarymarket/"+id)))
                 .andExpect(method(GET))
                 .andRespond(withSuccess(jsonResource("secondaryMarketItem"), MediaType.APPLICATION_JSON));
-        SecondaryMarketItemSummary item = bondora.getSecondMarketOperations().getItem(id);
+        SecondaryMarketItemSummary item = bondora.getSecondMarketOperations().getItem(id).getPayload();
         assertEquals(BigDecimal.valueOf(700.0), item.getDesiredDiscountRate());
     }
 
@@ -60,7 +60,7 @@ public class SecondaryMarketImplTest extends AbstractBondoraApiTest {
         mockServer.expect(requestTo(bondoraUrl("secondarymarket/loanpart/"+id)))
                 .andExpect(method(GET))
                 .andRespond(withSuccess(jsonResource("loanpart"), MediaType.APPLICATION_JSON));
-        LoanPartDetails details = bondora.getSecondMarketOperations().getLoanPart(id);
+        LoanPartDetails details = bondora.getSecondMarketOperations().getLoanPart(id).getPayload();
         assertEquals(2, details.getDebtManagmentEvents().size());
     }
 
@@ -71,7 +71,7 @@ public class SecondaryMarketImplTest extends AbstractBondoraApiTest {
                 .andRespond(withSuccess(jsonResource("success"), MediaType.APPLICATION_JSON));
         SecondMarketBuyRequest request = new SecondMarketBuyRequest();
         request.getItemIds().add("422038e9-13e1-4f83-9e33-964611e11336");
-        assertEquals(true, bondora.getSecondMarketOperations().buy(request));
+        assertEquals(true, bondora.getSecondMarketOperations().buy(request).isSuccess());
     }
 
     @Test
@@ -84,7 +84,7 @@ public class SecondaryMarketImplTest extends AbstractBondoraApiTest {
         sale.setLoanPartId("422038e9-13e1-4f83-9e33-964611e11336");
         sale.setDesiredDiscountRate(-5);
         request.getItemList().add(sale);
-        List<SecondMarketSaleResponse> responses = bondora.getSecondMarketOperations().sell(request);
+        List<SecondMarketSaleResponse> responses = bondora.getSecondMarketOperations().sell(request).getPayload();
         assertEquals(2, responses.size());
     }
 
@@ -94,7 +94,7 @@ public class SecondaryMarketImplTest extends AbstractBondoraApiTest {
         mockServer.expect(requestTo(bondoraUrl("secondarymarket/cancel/"+id)))
                 .andExpect(method(POST))
                 .andRespond(withSuccess(jsonResource("success"), MediaType.APPLICATION_JSON));
-        assertEquals(true, bondora.getSecondMarketOperations().cancel(id));
+        assertEquals(true, bondora.getSecondMarketOperations().cancel(id).isSuccess());
     }
 
 }

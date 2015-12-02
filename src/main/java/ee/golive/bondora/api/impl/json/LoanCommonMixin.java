@@ -28,13 +28,13 @@ import java.util.Date;
 @JsonIgnoreProperties(ignoreUnknown = true)
 abstract class LoanCommonMixin extends BondoraObjectMixin {
 
-    @JsonProperty("loanPartId")
+    @JsonProperty("LoanPartId")
     private String loanPartId;
 
     @JsonProperty("Amount")
     private BigDecimal amount;
 
-    @JsonProperty("auctionId")
+    @JsonProperty("AuctionId")
     private String auctionId;
 
     @JsonProperty("AuctionName")

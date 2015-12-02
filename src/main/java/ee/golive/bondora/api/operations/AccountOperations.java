@@ -18,10 +18,10 @@ package ee.golive.bondora.api.operations;
 
 import ee.golive.bondora.api.domain.MyAccountBalance;
 import ee.golive.bondora.api.domain.MyInvestmentItem;
-
-import java.util.List;
+import ee.golive.bondora.api.domain.results.ApiResultList;
+import ee.golive.bondora.api.domain.results.ApiResultSingle;
 
 public interface AccountOperations {
-    MyAccountBalance getAccountBalance();
-    List<MyInvestmentItem> getInvestments();
+    ApiResultSingle<MyAccountBalance> getAccountBalance();
+    ApiResultList<MyInvestmentItem> getInvestments();
 }

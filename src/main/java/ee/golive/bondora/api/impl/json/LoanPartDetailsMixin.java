@@ -1,5 +1,6 @@
 package ee.golive.bondora.api.impl.json;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import ee.golive.bondora.api.domain.DebtManagementEvent;
 import ee.golive.bondora.api.domain.LoanTransfer;
@@ -9,6 +10,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 abstract class LoanPartDetailsMixin extends LoanCommonMixin {
 
     @JsonProperty("InitialInterest")
