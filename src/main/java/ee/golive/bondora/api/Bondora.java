@@ -25,6 +25,7 @@ import ee.golive.bondora.api.operations.SecondaryMarketOperations;
 /**
  * Interface specifying a basic set of operations for interacting with Bondora.
  * Implemented by {@link BondoraImpl}.
+ *
  * @author Taavi Ilves
  */
 public interface Bondora {

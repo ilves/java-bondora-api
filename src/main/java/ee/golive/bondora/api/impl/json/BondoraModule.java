@@ -21,14 +21,17 @@ import ee.golive.bondora.api.domain.*;
 import ee.golive.bondora.api.domain.requests.BidRequest;
 import ee.golive.bondora.api.domain.requests.SecondMarketBuyRequest;
 import ee.golive.bondora.api.domain.requests.SecondMarketSaleRequest;
-import ee.golive.bondora.api.domain.results.ApiError;
-import ee.golive.bondora.api.domain.results.ApiResult;
-import ee.golive.bondora.api.domain.results.ApiResultList;
-import ee.golive.bondora.api.domain.results.ApiResultSingle;
+import ee.golive.bondora.api.domain.responses.ApiError;
+import ee.golive.bondora.api.domain.responses.ApiResult;
+import ee.golive.bondora.api.domain.responses.ApiResultList;
+import ee.golive.bondora.api.domain.responses.ApiResultSingle;
 import ee.golive.bondora.api.impl.CustomDateDeseralizer;
 
 import java.util.Date;
 
+/**
+ * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ */
 public class BondoraModule extends SimpleModule {
 
     public BondoraModule() {

@@ -14,8 +14,11 @@
  * limitations under the License.
  */
 
-package ee.golive.bondora.api.domain.results;
+package ee.golive.bondora.api.domain.responses;
 
+/**
+ * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ */
 public class ApiResultSingle<T> extends ApiResult {
 
     private T payload;

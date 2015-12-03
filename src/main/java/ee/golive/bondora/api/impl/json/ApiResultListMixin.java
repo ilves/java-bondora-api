@@ -21,6 +21,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
+/**
+ * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 abstract class ApiResultListMixin<T> extends ApiResultMixin {
 

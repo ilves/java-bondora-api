@@ -22,6 +22,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 abstract class SecondMarketItemMixin extends LoanCommonMixin {
 

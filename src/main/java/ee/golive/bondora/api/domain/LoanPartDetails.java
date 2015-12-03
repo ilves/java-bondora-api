@@ -20,6 +20,9 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ */
 public class LoanPartDetails extends BondoraObject {
     private BigDecimal initialInterest;
     private String loanId;

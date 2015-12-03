@@ -22,14 +22,17 @@ import ee.golive.bondora.api.domain.SecondaryMarketItem;
 import ee.golive.bondora.api.domain.SecondaryMarketItemSummary;
 import ee.golive.bondora.api.domain.requests.SecondMarketBuyRequest;
 import ee.golive.bondora.api.domain.requests.SecondMarketSaleRequest;
-import ee.golive.bondora.api.domain.results.ApiResult;
-import ee.golive.bondora.api.domain.results.ApiResultList;
-import ee.golive.bondora.api.domain.results.ApiResultSingle;
+import ee.golive.bondora.api.domain.responses.ApiResult;
+import ee.golive.bondora.api.domain.responses.ApiResultList;
+import ee.golive.bondora.api.domain.responses.ApiResultSingle;
 import ee.golive.bondora.api.operations.SecondaryMarketOperations;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
+/**
+ * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ */
 public class SecondaryMarketImpl implements SecondaryMarketOperations {
 
     private BondoraImpl api;

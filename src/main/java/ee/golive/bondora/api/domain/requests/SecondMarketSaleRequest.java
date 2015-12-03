@@ -22,6 +22,9 @@ import ee.golive.bondora.api.domain.SecondMarketSell;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ */
 public class SecondMarketSaleRequest extends BondoraObject {
 
     private List<SecondMarketSell> itemList = new LinkedList<>();

@@ -20,10 +20,13 @@ import ee.golive.bondora.api.domain.Auction;
 import ee.golive.bondora.api.domain.BidResponse;
 import ee.golive.bondora.api.domain.BidSummary;
 import ee.golive.bondora.api.domain.requests.BidRequest;
-import ee.golive.bondora.api.domain.results.ApiResult;
-import ee.golive.bondora.api.domain.results.ApiResultList;
-import ee.golive.bondora.api.domain.results.ApiResultSingle;
+import ee.golive.bondora.api.domain.responses.ApiResult;
+import ee.golive.bondora.api.domain.responses.ApiResultList;
+import ee.golive.bondora.api.domain.responses.ApiResultSingle;
 
+/**
+ * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ */
 public interface AuctionOperations {
     ApiResultSingle<Auction> getAuction(String id);
     ApiResultList<Auction> getAuctions();

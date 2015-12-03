@@ -42,8 +42,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * This is the central class for interacting with Bondora.
- * @author Taavi Ilves
+ * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
  */
 public class BondoraImpl implements Bondora {
 
@@ -58,8 +57,6 @@ public class BondoraImpl implements Bondora {
     private OAuthOperations oAuthOperations;
 
     private AccountOperations accountOperations;
-
-    private ObjectMapper objectMapper;
 
     private BondoraConfig config;
 
@@ -131,7 +128,7 @@ public class BondoraImpl implements Bondora {
 
     public MappingJackson2HttpMessageConverter getJsonMessageConverter() {
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-        objectMapper = new ObjectMapper();
+        ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new BondoraModule());
         converter.setObjectMapper(objectMapper);
         return converter;

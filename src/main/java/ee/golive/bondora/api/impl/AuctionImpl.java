@@ -18,14 +18,17 @@ package ee.golive.bondora.api.impl;
 
 import ee.golive.bondora.api.domain.*;
 import ee.golive.bondora.api.domain.requests.BidRequest;
-import ee.golive.bondora.api.domain.results.ApiResult;
-import ee.golive.bondora.api.domain.results.ApiResultList;
-import ee.golive.bondora.api.domain.results.ApiResultSingle;
+import ee.golive.bondora.api.domain.responses.ApiResult;
+import ee.golive.bondora.api.domain.responses.ApiResultList;
+import ee.golive.bondora.api.domain.responses.ApiResultSingle;
 import ee.golive.bondora.api.operations.AuctionOperations;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
+/**
+ * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ */
 public class AuctionImpl implements AuctionOperations {
 
     private BondoraImpl api;

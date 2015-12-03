@@ -18,9 +18,12 @@ package ee.golive.bondora.api.operations;
 
 import ee.golive.bondora.api.domain.MyAccountBalance;
 import ee.golive.bondora.api.domain.MyInvestmentItem;
-import ee.golive.bondora.api.domain.results.ApiResultList;
-import ee.golive.bondora.api.domain.results.ApiResultSingle;
+import ee.golive.bondora.api.domain.responses.ApiResultList;
+import ee.golive.bondora.api.domain.responses.ApiResultSingle;
 
+/**
+ * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ */
 public interface AccountOperations {
     ApiResultSingle<MyAccountBalance> getAccountBalance();
     ApiResultList<MyInvestmentItem> getInvestments();

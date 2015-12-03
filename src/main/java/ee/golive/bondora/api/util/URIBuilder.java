@@ -30,6 +30,7 @@ import java.util.Set;
 
 /**
  * Builds up a URI from individual URI components. Ensures that query parameters are application/x-www-form-urlencoded.
+ *
  * @author Craig Walls
  * @author Taavi Ilves
  */

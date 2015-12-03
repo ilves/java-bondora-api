@@ -18,6 +18,9 @@ package ee.golive.bondora.api.domain.requests;
 
 import ee.golive.bondora.api.domain.BondoraObject;
 
+/**
+ * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ */
 public class TokenRequest extends BondoraObject {
     private String grant_type;
     private String client_id;

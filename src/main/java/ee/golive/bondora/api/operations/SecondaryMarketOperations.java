@@ -22,10 +22,13 @@ import ee.golive.bondora.api.domain.SecondaryMarketItem;
 import ee.golive.bondora.api.domain.SecondaryMarketItemSummary;
 import ee.golive.bondora.api.domain.requests.SecondMarketBuyRequest;
 import ee.golive.bondora.api.domain.requests.SecondMarketSaleRequest;
-import ee.golive.bondora.api.domain.results.ApiResult;
-import ee.golive.bondora.api.domain.results.ApiResultList;
-import ee.golive.bondora.api.domain.results.ApiResultSingle;
+import ee.golive.bondora.api.domain.responses.ApiResult;
+import ee.golive.bondora.api.domain.responses.ApiResultList;
+import ee.golive.bondora.api.domain.responses.ApiResultSingle;
 
+/**
+ * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ */
 public interface SecondaryMarketOperations {
     ApiResultSingle<SecondaryMarketItemSummary> getItem(String id);
     ApiResultList<SecondaryMarketItem> getItems();

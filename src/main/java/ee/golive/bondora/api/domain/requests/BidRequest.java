@@ -21,6 +21,9 @@ import ee.golive.bondora.api.domain.BondoraObject;
 
 import java.util.List;
 
+/**
+ * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ */
 public class BidRequest extends BondoraObject {
 
     private List<Bid> bids;

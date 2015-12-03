@@ -18,6 +18,9 @@ package ee.golive.bondora.api.domain;
 
 import java.math.BigDecimal;
 
+/**
+ * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ */
 public class Bid extends BondoraObject {
 
     private String auctionId;

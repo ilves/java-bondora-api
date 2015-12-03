@@ -16,6 +16,9 @@
 
 package ee.golive.bondora.api.util;
 
+/**
+ * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ */
 public class URIBuilderException extends RuntimeException {
 
     public URIBuilderException(String message) {

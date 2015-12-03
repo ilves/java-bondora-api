@@ -14,15 +14,31 @@
  * limitations under the License.
  */
 
-package ee.golive.bondora.api.domain.results;
+package ee.golive.bondora.api.domain.responses;
 
-import ee.golive.bondora.api.domain.BondoraObject;
+import java.util.List;
 
-public class ApiError extends BondoraObject {
+/**
+ * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ */
+public class ApiResultList<T> extends ApiResult {
 
-    private Integer code;
+    private List<T> payload;
+    private Integer totalCount;
 
-    private String message;
+    public List<T> getPayload() {
+        return payload;
+    }
 
-    private String details;
+    public void setPayload(List<T> payload) {
+        this.payload = payload;
+    }
+
+    public Integer getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(Integer totalCount) {
+        this.totalCount = totalCount;
+    }
 }

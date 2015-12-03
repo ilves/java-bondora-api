@@ -18,6 +18,9 @@ package ee.golive.bondora.api.domain;
 
 import java.util.List;
 
+/**
+ * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ */
 public class AuctionExtended extends Auction {
 
     private List<Liability> liabilities;

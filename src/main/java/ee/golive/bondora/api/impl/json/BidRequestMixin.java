@@ -22,6 +22,9 @@ import ee.golive.bondora.api.domain.Bid;
 
 import java.util.List;
 
+/**
+ * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 abstract class BidRequestMixin extends BondoraObjectMixin {
 

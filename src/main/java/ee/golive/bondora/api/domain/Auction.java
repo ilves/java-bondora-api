@@ -19,6 +19,9 @@ package ee.golive.bondora.api.domain;
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ */
 public class Auction extends BondoraObject {
 
     private String loanId;
