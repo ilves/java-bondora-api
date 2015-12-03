@@ -1,20 +1,7 @@
-# Under development, DO NOT USE IN PRODUCTION YET!
-# If you want help, ask for mor information using issues or create pull request
+JAVA SDK FOR BONDORA API
+========================
 
-# Bondora SDK for JAVA
+[![Build Status](https://api.travis-ci.org/ilves/java-bondora-api.svg)](http://travis-ci.org/ilves/java-bondora-api)
 
-This repository contains the open source JAVA SDK that allows you to access the Bondora API from your JAVA app.
-
-## Installation
-
-To use the API in your maven project, include the following in your pom.xml:
-
-    <repository>
-        <id>jitpack.io</id>
-        <url>https://jitpack.io</url>
-    </repository>
-    <dependency>
-        <groupId>com.github.ilves</groupId>
-        <artifactId>java-bondora-api</artifactId>
-        <version>b321b360f1</version>
-    </dependency>
+Project is still under construction, do not use in production
+=============================================================
