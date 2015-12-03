@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
- * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ * @author Taavi Ilves, Golive OÃœ, http://www.golive.ee/
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 abstract class SecondMarketBuyRequestMixin extends BondoraObjectMixin {

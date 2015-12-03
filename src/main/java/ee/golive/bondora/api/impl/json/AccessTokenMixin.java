@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ * @author Taavi Ilves, Golive OÃœ, http://www.golive.ee/
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 abstract class AccessTokenMixin {

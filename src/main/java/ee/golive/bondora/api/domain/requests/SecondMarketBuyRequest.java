@@ -22,7 +22,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ * @author Taavi Ilves, Golive OÃœ, http://www.golive.ee/
  */
 public class SecondMarketBuyRequest extends BondoraObject {
     private List<String> itemIds = new LinkedList<>();

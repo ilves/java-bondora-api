@@ -24,7 +24,7 @@ import ee.golive.bondora.api.operations.AccountOperations;
 import org.springframework.core.ParameterizedTypeReference;
 
 /**
- * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ * @author Taavi Ilves, Golive OÃœ, http://www.golive.ee/
  */
 public class AccountImpl implements AccountOperations {
 

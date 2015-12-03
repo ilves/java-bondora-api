@@ -19,7 +19,7 @@ package ee.golive.bondora.api.domain;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * @author Taavi Ilves, Golive O�, http://www.golive.ee/
+ * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
  */
 public enum CollateralType {
 

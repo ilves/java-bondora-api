@@ -24,7 +24,7 @@ import ee.golive.bondora.api.domain.TypeOfLiability;
 import java.math.BigDecimal;
 
 /**
- * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ * @author Taavi Ilves, Golive OÃœ, http://www.golive.ee/
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 abstract class LiabilityMixin extends BondoraObjectMixin {

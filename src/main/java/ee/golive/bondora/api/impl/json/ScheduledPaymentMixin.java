@@ -23,7 +23,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ * @author Taavi Ilves, Golive OÃœ, http://www.golive.ee/
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 abstract class ScheduledPaymentMixin extends BondoraObjectMixin {

@@ -25,7 +25,7 @@ import ee.golive.bondora.api.domain.Liability;
 import java.util.List;
 
 /**
- * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ * @author Taavi Ilves, Golive OÃœ, http://www.golive.ee/
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 abstract class AuctionExtendedMixin extends Auction {

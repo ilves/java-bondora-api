@@ -21,7 +21,7 @@ import ee.golive.bondora.api.domain.BondoraObject;
 import java.util.List;
 
 /**
- * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ * @author Taavi Ilves, Golive OÃœ, http://www.golive.ee/
  */
 public class ApiResult extends BondoraObject {
 

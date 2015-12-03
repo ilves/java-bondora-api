@@ -27,7 +27,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ * @author Taavi Ilves, Golive OÃœ, http://www.golive.ee/
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 abstract class LoanPartDetailsMixin extends LoanCommonMixin {

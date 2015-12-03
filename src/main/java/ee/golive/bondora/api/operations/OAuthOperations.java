@@ -17,7 +17,7 @@
 package ee.golive.bondora.api.operations;
 
 /**
- * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ * @author Taavi Ilves, Golive OÃœ, http://www.golive.ee/
  */
 public interface OAuthOperations {
     String getAuthUrl(String[] scope);

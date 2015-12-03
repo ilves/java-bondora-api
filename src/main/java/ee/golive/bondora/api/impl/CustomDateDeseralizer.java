@@ -17,7 +17,6 @@
 package ee.golive.bondora.api.impl;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 
@@ -27,7 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @author Taavi Ilves, Golive O�, http://www.golive.ee/
+ * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
  */
 public class CustomDateDeseralizer extends JsonDeserializer<Date> {
 

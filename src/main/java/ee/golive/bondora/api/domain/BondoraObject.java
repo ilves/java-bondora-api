@@ -17,7 +17,7 @@
 package ee.golive.bondora.api.domain;
 
 /**
- * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ * @author Taavi Ilves, Golive OÃœ, http://www.golive.ee/
  */
 public abstract class BondoraObject {
 

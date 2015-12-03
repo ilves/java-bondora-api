@@ -26,7 +26,7 @@ import org.springframework.http.client.ClientHttpResponse;
 import java.io.IOException;
 
 /**
- * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
+ * @author Taavi Ilves, Golive OÃœ, http://www.golive.ee/
  */
 public class TokenInterceptor implements ClientHttpRequestInterceptor {
 
