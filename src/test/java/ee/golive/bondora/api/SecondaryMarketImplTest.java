@@ -59,7 +59,7 @@ public class SecondaryMarketImplTest extends AbstractBondoraApiTest {
         String id = "422038e9-13e1-4f83-9e33-964611e11336";
         mockServer.expect(requestTo(bondoraUrl("secondarymarket/loanpart/"+id)))
                 .andExpect(method(GET))
-                .andRespond(withSuccess(jsonResource("loanpart"), MediaType.APPLICATION_JSON));
+                .andRespond(withSuccess(jsonResource("loanPart"), MediaType.APPLICATION_JSON));
         LoanPartDetails details = bondora.getSecondMarketOperations().getLoanPart(id).getPayload();
         assertEquals(2, details.getDebtManagmentEvents().size());
     }
