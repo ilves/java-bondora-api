@@ -1,0 +1,29 @@
+{
+  "Payload": [
+    {
+      "Id": "443929df-a9d0-46d0-87aa-7b7305bec624",
+      "AuctionId": "4e0ff309-f6b9-40ec-9aad-604203c10276",
+      "Amount": 3.0,
+      "MinAmount": 1.0
+    },
+    {
+      "Id": "443929df-a9d0-46d0-87aa-7b7305bec624",
+      "AuctionId": "4e0ff309-f6b9-40ec-9aad-604203c10276",
+      "Amount": 3.0,
+      "MinAmount": 1.0
+    }
+  ],
+  "Success": true,
+  "Errors": [
+    {
+      "Code": 1,
+      "Message": "sample string 2",
+      "Details": "sample string 3"
+    },
+    {
+      "Code": 1,
+      "Message": "sample string 2",
+      "Details": "sample string 3"
+    }
+  ]
+}

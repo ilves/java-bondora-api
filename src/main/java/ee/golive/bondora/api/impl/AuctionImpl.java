@@ -16,9 +16,7 @@
 
 package ee.golive.bondora.api.impl;
 
-import ee.golive.bondora.api.domain.Auction;
-import ee.golive.bondora.api.domain.BidResponse;
-import ee.golive.bondora.api.domain.BidSummary;
+import ee.golive.bondora.api.domain.*;
 import ee.golive.bondora.api.domain.requests.BidRequest;
 import ee.golive.bondora.api.domain.results.ApiResult;
 import ee.golive.bondora.api.domain.results.ApiResultList;
@@ -50,7 +48,9 @@ public class AuctionImpl implements AuctionOperations {
 
     @Override
     public ApiResultSingle<BidSummary> getBid(String id) {
-        return null;
+        ParameterizedTypeReference<ApiResultSingle<BidSummary>> reference =
+                new ParameterizedTypeReference<ApiResultSingle<BidSummary>>() {};
+        return (api.fetchObject(api.apiUrl("bid/" + id), reference));
     }
 
     @Override
@@ -62,12 +62,14 @@ public class AuctionImpl implements AuctionOperations {
 
     @Override
     public ApiResultList<BidResponse> bid(BidRequest request) {
-        return null;
+        ParameterizedTypeReference<ApiResultList<BidResponse>> reference
+                = new ParameterizedTypeReference<ApiResultList<BidResponse>>() {};
+        return (api.postObject(api.apiUrl("bid"), request, reference));
     }
 
     @Override
     public ApiResult cancelBid(String id) {
-        return null;
+        return api.postObject(api.apiUrl("bid/" + id + "/cancel"), ApiResult.class);
     }
 
     @Override

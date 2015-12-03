@@ -16,8 +16,8 @@
 
 package ee.golive.bondora.api;
 
-import ee.golive.bondora.api.domain.Auction;
-import ee.golive.bondora.api.domain.BidSummary;
+import ee.golive.bondora.api.domain.*;
+import ee.golive.bondora.api.domain.requests.BidRequest;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 
@@ -25,6 +25,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
@@ -81,6 +82,34 @@ public class AuctionTemplateTest extends AbstractBondoraApiTest {
         assertEquals(3, bids.size());
     }
 
+    @Test
+    public void cancelBid() throws Exception {
+        String id = "422038e9-13e1-4f83-9e33-964611e11336";
+        mockServer.expect(requestTo(bondoraUrl("bid/"+id+"/cancel")))
+                .andExpect(method(POST))
+                .andRespond(withSuccess(jsonResource("success"), MediaType.APPLICATION_JSON));
+        assertEquals(true, bondora.getAuctionOperations().cancelBid(id).isSuccess());
+    }
+
+    @Test
+    public void bid() throws Exception {
+        mockServer.expect(requestTo(bondoraUrl("bid")))
+                .andExpect(method(POST))
+                .andRespond(withSuccess(jsonResource("bidResult"), MediaType.APPLICATION_JSON));
+        BidRequest request = new BidRequest();
+        List<BidResponse> response = bondora.getAuctionOperations().bid(request).getPayload();
+        assertEquals(2, response.size());
+    }
+
+    @Test
+    public void getBid() throws Exception {
+        String id = "422038e9-13e1-4f83-9e33-964611e11336";
+        mockServer.expect(requestTo(bondoraUrl("bid/"+id)))
+                .andExpect(method(GET))
+                .andRespond(withSuccess(jsonResource("bid"), MediaType.APPLICATION_JSON));
+        BidSummary summary = bondora.getAuctionOperations().getBid(id).getPayload();
+        assertEquals(true, summary.getIsRequestBeingProcessed());
+    }
 
     private void assertFoundJohnSmithLoan(Auction auction) {
         assertEquals("ca0182f1-fbcc-4b9d-a685-ee2bbdebe97b", auction.getLoanId());

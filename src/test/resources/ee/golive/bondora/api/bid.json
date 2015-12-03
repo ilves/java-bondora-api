@@ -1,0 +1,27 @@
+{
+  "Payload": {
+    "Id": "6bc9b5dd-c7d7-4c94-9378-2848df05bfb5",
+    "AuctionId": "9f2f3492-00e0-4304-904e-06fa6307768f",
+    "RequestedBidAmount": 3.0,
+    "ActualBidAmount": 1.0,
+    "RequestedBidMinimumLimit": 1.0,
+    "BidRequestedDate": "2015-12-03T10:10:36.3208714+02:00",
+    "BidProcessedDate": "2015-12-03T10:10:36.3208714+02:00",
+    "IsRequestBeingProcessed": true,
+    "StatusCode": 0,
+    "FailureReason": 0
+  },
+  "Success": true,
+  "Errors": [
+    {
+      "Code": 1,
+      "Message": "sample string 2",
+      "Details": "sample string 3"
+    },
+    {
+      "Code": 1,
+      "Message": "sample string 2",
+      "Details": "sample string 3"
+    }
+  ]
+}
