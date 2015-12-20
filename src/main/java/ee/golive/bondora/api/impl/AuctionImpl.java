@@ -21,6 +21,7 @@ import ee.golive.bondora.api.domain.requests.BidRequest;
 import ee.golive.bondora.api.domain.responses.ApiResult;
 import ee.golive.bondora.api.domain.responses.ApiResultList;
 import ee.golive.bondora.api.domain.responses.ApiResultSingle;
+import ee.golive.bondora.api.exceptions.BondoraException;
 import ee.golive.bondora.api.operations.AuctionOperations;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.util.LinkedMultiValueMap;
@@ -38,50 +39,50 @@ public class AuctionImpl implements AuctionOperations {
     }
 
     @Override
-    public ApiResultList<Auction> getAuctions() {
+    public ApiResultList<Auction> getAuctions() throws BondoraException {
         return getAuctions(null);
     }
 
     @Override
-    public ApiResultList<Auction> getAuctions(String query) {
+    public ApiResultList<Auction> getAuctions(String query) throws BondoraException {
         ParameterizedTypeReference<ApiResultList<Auction>> reference =
                 new ParameterizedTypeReference<ApiResultList<Auction>>() {};
         return (api.fetchObject(api.apiUrl("auctions"), getQueryParameters(query), reference));
     }
 
     @Override
-    public ApiResultSingle<BidSummary> getBid(String id) {
+    public ApiResultSingle<BidSummary> getBid(String id) throws BondoraException {
         ParameterizedTypeReference<ApiResultSingle<BidSummary>> reference =
                 new ParameterizedTypeReference<ApiResultSingle<BidSummary>>() {};
         return (api.fetchObject(api.apiUrl("bid/" + id), reference));
     }
 
     @Override
-    public ApiResultSingle<Auction> getAuction(String id) {
+    public ApiResultSingle<Auction> getAuction(String id) throws BondoraException {
         ParameterizedTypeReference<ApiResultSingle<Auction>> reference =
                 new ParameterizedTypeReference<ApiResultSingle<Auction>>() {};
         return (api.fetchObject(api.apiUrl("auction/" + id), reference));
     }
 
     @Override
-    public ApiResultList<BidResponse> bid(BidRequest request) {
+    public ApiResultList<BidResponse> bid(BidRequest request) throws BondoraException {
         ParameterizedTypeReference<ApiResultList<BidResponse>> reference
                 = new ParameterizedTypeReference<ApiResultList<BidResponse>>() {};
         return (api.postObject(api.apiUrl("bid"), request, reference));
     }
 
     @Override
-    public ApiResult cancelBid(String id) {
+    public ApiResult cancelBid(String id) throws BondoraException {
         return api.postObject(api.apiUrl("bid/" + id + "/cancel"), ApiResult.class);
     }
 
     @Override
-    public ApiResultList<BidSummary> getBids() {
+    public ApiResultList<BidSummary> getBids() throws BondoraException {
         return getBids(null);
     }
 
     @Override
-    public ApiResultList<BidSummary> getBids(String query) {
+    public ApiResultList<BidSummary> getBids(String query) throws BondoraException {
         ParameterizedTypeReference<ApiResultList<BidSummary>> reference
                 = new ParameterizedTypeReference<ApiResultList<BidSummary>>() {};
         return (api.fetchObject(api.apiUrl("bids"), getQueryParameters(query), reference));

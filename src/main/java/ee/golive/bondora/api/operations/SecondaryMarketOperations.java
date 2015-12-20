@@ -25,16 +25,17 @@ import ee.golive.bondora.api.domain.requests.SecondMarketSaleRequest;
 import ee.golive.bondora.api.domain.responses.ApiResult;
 import ee.golive.bondora.api.domain.responses.ApiResultList;
 import ee.golive.bondora.api.domain.responses.ApiResultSingle;
+import ee.golive.bondora.api.exceptions.BondoraException;
 
 /**
  * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
  */
 public interface SecondaryMarketOperations {
-    ApiResultSingle<SecondaryMarketItemSummary> getItem(String id);
-    ApiResultList<SecondaryMarketItem> getItems();
-    ApiResultList<SecondaryMarketItem> getItems(String query);
-    ApiResultSingle<LoanPartDetails> getLoanPart(String id);
-    ApiResult buy(SecondMarketBuyRequest request);
-    ApiResultList<SecondMarketSaleResponse> sell(SecondMarketSaleRequest request);
-    ApiResult cancel(String id);
+    ApiResultSingle<SecondaryMarketItemSummary> getItem(String id) throws BondoraException;
+    ApiResultList<SecondaryMarketItem> getItems() throws BondoraException;
+    ApiResultList<SecondaryMarketItem> getItems(String query) throws BondoraException;
+    ApiResultSingle<LoanPartDetails> getLoanPart(String id) throws BondoraException;
+    ApiResult buy(SecondMarketBuyRequest request) throws BondoraException;
+    ApiResultList<SecondMarketSaleResponse> sell(SecondMarketSaleRequest request) throws BondoraException;
+    ApiResult cancel(String id) throws BondoraException;
 }

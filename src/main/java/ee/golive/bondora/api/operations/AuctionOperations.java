@@ -23,17 +23,18 @@ import ee.golive.bondora.api.domain.requests.BidRequest;
 import ee.golive.bondora.api.domain.responses.ApiResult;
 import ee.golive.bondora.api.domain.responses.ApiResultList;
 import ee.golive.bondora.api.domain.responses.ApiResultSingle;
+import ee.golive.bondora.api.exceptions.BondoraException;
 
 /**
  * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
  */
 public interface AuctionOperations {
-    ApiResultSingle<Auction> getAuction(String id);
-    ApiResultList<Auction> getAuctions();
-    ApiResultList<Auction> getAuctions(String query);
-    ApiResultSingle<BidSummary> getBid(String id);
-    ApiResultList<BidSummary> getBids();
-    ApiResultList<BidSummary> getBids(String query);
-    ApiResultList<BidResponse> bid(BidRequest request);
-    ApiResult cancelBid(String id);
+    ApiResultSingle<Auction> getAuction(String id) throws BondoraException;
+    ApiResultList<Auction> getAuctions() throws BondoraException;
+    ApiResultList<Auction> getAuctions(String query) throws BondoraException;
+    ApiResultSingle<BidSummary> getBid(String id) throws BondoraException;
+    ApiResultList<BidSummary> getBids() throws BondoraException;
+    ApiResultList<BidSummary> getBids(String query) throws BondoraException;
+    ApiResultList<BidResponse> bid(BidRequest request) throws BondoraException;
+    ApiResult cancelBid(String id) throws BondoraException;
 }

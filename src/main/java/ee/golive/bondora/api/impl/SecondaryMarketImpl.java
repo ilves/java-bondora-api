@@ -25,6 +25,7 @@ import ee.golive.bondora.api.domain.requests.SecondMarketSaleRequest;
 import ee.golive.bondora.api.domain.responses.ApiResult;
 import ee.golive.bondora.api.domain.responses.ApiResultList;
 import ee.golive.bondora.api.domain.responses.ApiResultSingle;
+import ee.golive.bondora.api.exceptions.BondoraException;
 import ee.golive.bondora.api.operations.SecondaryMarketOperations;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.util.LinkedMultiValueMap;
@@ -42,45 +43,45 @@ public class SecondaryMarketImpl implements SecondaryMarketOperations {
     }
 
     @Override
-    public ApiResultSingle<SecondaryMarketItemSummary> getItem(String id) {
+    public ApiResultSingle<SecondaryMarketItemSummary> getItem(String id) throws BondoraException {
         ParameterizedTypeReference<ApiResultSingle<SecondaryMarketItemSummary>> reference
                 = new ParameterizedTypeReference<ApiResultSingle<SecondaryMarketItemSummary>>() {};
         return (api.fetchObject(api.apiUrl("secondarymarket/" + id), reference));
     }
 
     @Override
-    public ApiResultList<SecondaryMarketItem> getItems() {
+    public ApiResultList<SecondaryMarketItem> getItems() throws BondoraException {
         return getItems(null);
     }
 
     @Override
-    public ApiResultList<SecondaryMarketItem> getItems(String query) {
+    public ApiResultList<SecondaryMarketItem> getItems(String query) throws BondoraException {
         ParameterizedTypeReference<ApiResultList<SecondaryMarketItem>> reference
                 = new ParameterizedTypeReference<ApiResultList<SecondaryMarketItem>>() {};
         return (api.fetchObject(api.apiUrl("secondarymarket"), getQueryParameters(query), reference));
     }
 
     @Override
-    public ApiResultSingle<LoanPartDetails> getLoanPart(String id) {
+    public ApiResultSingle<LoanPartDetails> getLoanPart(String id) throws BondoraException {
         ParameterizedTypeReference<ApiResultSingle<LoanPartDetails>> reference
                 = new ParameterizedTypeReference<ApiResultSingle<LoanPartDetails>>() {};
         return (api.fetchObject(api.apiUrl("secondarymarket/loanpart/" + id), reference));
     }
 
     @Override
-    public ApiResult buy(SecondMarketBuyRequest request) {
+    public ApiResult buy(SecondMarketBuyRequest request) throws BondoraException {
         return api.postObject(api.apiUrl("secondarymarket/buy"), request, ApiResult.class);
     }
 
     @Override
-    public ApiResultList<SecondMarketSaleResponse> sell(SecondMarketSaleRequest request) {
+    public ApiResultList<SecondMarketSaleResponse> sell(SecondMarketSaleRequest request) throws BondoraException {
         ParameterizedTypeReference<ApiResultList<SecondMarketSaleResponse>> reference
                 = new ParameterizedTypeReference<ApiResultList<SecondMarketSaleResponse>>() {};
         return (api.postObject(api.apiUrl("secondarymarket/sell"), request, reference));
     }
 
     @Override
-    public ApiResult cancel(String id) {
+    public ApiResult cancel(String id) throws BondoraException {
         return api.postObject(api.apiUrl("secondarymarket/cancel/" + id), ApiResult.class);
     }
 

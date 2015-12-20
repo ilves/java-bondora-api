@@ -17,6 +17,7 @@
 package ee.golive.bondora.api.impl;
 
 import ee.golive.bondora.api.domain.AccessToken;
+import ee.golive.bondora.api.exceptions.BondoraException;
 import ee.golive.bondora.api.operations.OAuthOperations;
 import ee.golive.bondora.api.util.URIBuilder;
 import org.springframework.util.LinkedMultiValueMap;
@@ -55,12 +56,12 @@ public class OAuthImpl implements OAuthOperations {
     }
 
     @Override
-    public String getAccessToken(String code) {
+    public String getAccessToken(String code) throws BondoraException {
         return getAccessToken(code, null);
     }
 
     @Override
-    public String getAccessToken(String code, String redirectUri) {
+    public String getAccessToken(String code, String redirectUri) throws BondoraException {
         MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
         map.add("grant_type", "authorization_code");
         map.add("client_id", api.getConfig().getClientId());

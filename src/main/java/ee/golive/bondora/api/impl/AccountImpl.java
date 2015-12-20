@@ -20,6 +20,7 @@ import ee.golive.bondora.api.domain.MyAccountBalance;
 import ee.golive.bondora.api.domain.MyInvestmentItem;
 import ee.golive.bondora.api.domain.responses.ApiResultList;
 import ee.golive.bondora.api.domain.responses.ApiResultSingle;
+import ee.golive.bondora.api.exceptions.BondoraException;
 import ee.golive.bondora.api.operations.AccountOperations;
 import org.springframework.core.ParameterizedTypeReference;
 
@@ -35,14 +36,14 @@ public class AccountImpl implements AccountOperations {
     }
 
     @Override
-    public ApiResultSingle<MyAccountBalance> getAccountBalance() {
+    public ApiResultSingle<MyAccountBalance> getAccountBalance() throws BondoraException {
         ParameterizedTypeReference<ApiResultSingle<MyAccountBalance>> reference =
                 new ParameterizedTypeReference<ApiResultSingle<MyAccountBalance>>() {};
         return (api.fetchObject(api.apiUrl("account/balance"), reference));
     }
 
     @Override
-    public ApiResultList<MyInvestmentItem> getInvestments() {
+    public ApiResultList<MyInvestmentItem> getInvestments() throws BondoraException {
         ParameterizedTypeReference<ApiResultList<MyInvestmentItem>> reference =
                 new ParameterizedTypeReference<ApiResultList<MyInvestmentItem>>() {};
         return (api.fetchObject(api.apiUrl("account/investments"), reference));

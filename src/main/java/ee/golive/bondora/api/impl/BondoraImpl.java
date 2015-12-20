@@ -19,6 +19,8 @@ package ee.golive.bondora.api.impl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ee.golive.bondora.api.Bondora;
 import ee.golive.bondora.api.BondoraConfig;
+import ee.golive.bondora.api.domain.responses.ApiResult;
+import ee.golive.bondora.api.exceptions.BondoraException;
 import ee.golive.bondora.api.impl.json.BondoraModule;
 import ee.golive.bondora.api.operations.AccountOperations;
 import ee.golive.bondora.api.operations.AuctionOperations;
@@ -28,6 +30,7 @@ import ee.golive.bondora.api.util.URIBuilder;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
@@ -134,27 +137,42 @@ public class BondoraImpl implements Bondora {
         return converter;
     }
 
-    public <T> T fetchObject(String resource, MultiValueMap<String, String> queryParameters, ParameterizedTypeReference<T> responseType) {
+    public <T> T fetchObject(String resource, MultiValueMap<String, String> queryParameters,
+                             ParameterizedTypeReference<T> responseType) throws BondoraException {
         URI uri = URIBuilder.fromUri(resource).queryParams(queryParameters).build();
-        return getRestTemplate().exchange(uri, HttpMethod.GET, null, responseType).getBody();
+        ResponseEntity<T> response = getRestTemplate().exchange(uri, HttpMethod.GET, null, responseType);
+        if (response.getStatusCode().is2xxSuccessful()) {
+            return response.getBody();
+        }
+        throw new BondoraException("", (ApiResult) response.getBody(), response.getStatusCode());
     }
 
-    public <T> T postObject(String resource, Object entity, ParameterizedTypeReference<T> responseType) {
+    public <T> T postObject(String resource, Object entity, ParameterizedTypeReference<T> responseType)
+            throws BondoraException {
         URI uri = URIBuilder.fromUri(resource).build();
-        HttpEntity<?> httpEntity = new HttpEntity<Object>(entity, null);
-        return getRestTemplate().exchange(uri, HttpMethod.POST, httpEntity, responseType).getBody();
+        HttpEntity<?> httpEntity = new HttpEntity<>(entity, null);
+        ResponseEntity<T> response = getRestTemplate().exchange(uri, HttpMethod.POST, httpEntity, responseType);
+        if (response.getStatusCode().is2xxSuccessful()) {
+            return response.getBody();
+        }
+        throw new BondoraException("", (ApiResult) response.getBody(), response.getStatusCode());
     }
 
-    public <T> T fetchObject(String resource, ParameterizedTypeReference<T> responseType) {
+    public <T> T fetchObject(String resource, ParameterizedTypeReference<T> responseType) throws BondoraException {
         return fetchObject(resource, null, responseType);
     }
 
-    public <T> T postObject(String resource, Object entity, Class<T> type) {
+    public <T> T postObject(String resource, Object entity, Class<T> type) throws BondoraException  {
         URI uri = URIBuilder.fromUri(resource).build();
-        return getRestTemplate().postForObject(uri, entity, type);
+        HttpEntity<?> httpEntity = new HttpEntity<>(entity, null);
+        ResponseEntity<T> response = getRestTemplate().exchange(uri, HttpMethod.POST, httpEntity, type);
+        if (response.getStatusCode().is2xxSuccessful()) {
+            return response.getBody();
+        }
+        throw new BondoraException("", (ApiResult) response.getBody(), response.getStatusCode());
     }
 
-    public <T> T postObject(String resource, Class<T> type) {
+    public <T> T postObject(String resource, Class<T> type) throws BondoraException  {
         return postObject(resource, null, type);
     }
 

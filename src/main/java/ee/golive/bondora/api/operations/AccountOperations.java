@@ -20,11 +20,12 @@ import ee.golive.bondora.api.domain.MyAccountBalance;
 import ee.golive.bondora.api.domain.MyInvestmentItem;
 import ee.golive.bondora.api.domain.responses.ApiResultList;
 import ee.golive.bondora.api.domain.responses.ApiResultSingle;
+import ee.golive.bondora.api.exceptions.BondoraException;
 
 /**
  * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
  */
 public interface AccountOperations {
-    ApiResultSingle<MyAccountBalance> getAccountBalance();
-    ApiResultList<MyInvestmentItem> getInvestments();
+    ApiResultSingle<MyAccountBalance> getAccountBalance() throws BondoraException;
+    ApiResultList<MyInvestmentItem> getInvestments() throws BondoraException;
 }

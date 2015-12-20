@@ -16,6 +16,8 @@
 
 package ee.golive.bondora.api.operations;
 
+import ee.golive.bondora.api.exceptions.BondoraException;
+
 /**
  * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
  */
@@ -23,6 +25,6 @@ public interface OAuthOperations {
     String getAuthUrl(String[] scope);
     String getAuthUrl(String[] scope, String redirectUri);
     String getAuthUrl(String[] scope, String redirectUri, String state);
-    String getAccessToken(String code);
-    String getAccessToken(String code, String redirectUri);
+    String getAccessToken(String code) throws BondoraException;
+    String getAccessToken(String code, String redirectUri) throws BondoraException;
 }
