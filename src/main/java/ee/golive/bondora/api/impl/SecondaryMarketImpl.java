@@ -65,7 +65,7 @@ public class SecondaryMarketImpl implements SecondaryMarketOperations {
     public ApiResultSingle<LoanPartDetails> getLoanPart(String id) throws BondoraException {
         ParameterizedTypeReference<ApiResultSingle<LoanPartDetails>> reference
                 = new ParameterizedTypeReference<ApiResultSingle<LoanPartDetails>>() {};
-        return (api.fetchObject(api.apiUrl("secondarymarket/loanpart/" + id), reference));
+        return (api.fetchObject(api.apiUrl("loanpart/" + id), reference));
     }
 
     @Override
