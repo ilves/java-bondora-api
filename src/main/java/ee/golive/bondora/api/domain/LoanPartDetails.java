@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
  */
-public class LoanPartDetails extends BondoraObject {
+public class LoanPartDetails extends LoanCommon {
     private BigDecimal initialInterest;
     private String loanId;
     private Integer loanDuration;
