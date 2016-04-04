@@ -31,6 +31,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
@@ -41,7 +42,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -183,7 +183,10 @@ public class BondoraImpl implements Bondora {
     private RestTemplate createRestTemplate() {
         List<HttpMessageConverter<?>> messageConverters = getMessageConverters();
         RestTemplate restTemplate = new RestTemplate(messageConverters);
-        restTemplate.setInterceptors(Collections.singletonList(new TokenInterceptor(this)));
+        List<ClientHttpRequestInterceptor> interceptors = new ArrayList<>();
+        interceptors.add(new TokenInterceptor(this));
+        interceptors.add(new LoggingRequestInterceptor());
+        restTemplate.setInterceptors(interceptors);
         return restTemplate;
     }
 
