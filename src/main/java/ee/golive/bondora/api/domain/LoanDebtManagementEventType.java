@@ -32,7 +32,19 @@ public enum LoanDebtManagementEventType {
     DecisionMadeAndDeclared(20),
     DeceasedCustomer(22),
     CallMade(23),
-    DebtNotificationSmsSent(24);
+    DebtNotificationSmsSent(24),
+    InHouseCollection(30),
+    DCA1(31),
+    CurePeriod(32),
+    DCA2(33),
+    DCA3(34),
+    PaymentOrder(35),
+    CivilCase(36),
+    Bailiff(37),
+    Deceased(38),
+    DebtRestructuring(39),
+    Bankruptcy(40),
+    CriminalCase(41);
 
     private final int value;
 
