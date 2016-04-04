@@ -1,7 +1,6 @@
 package ee.golive.bondora.api.impl;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
@@ -16,11 +15,12 @@ import java.io.InputStreamReader;
  */
 public class LoggingRequestInterceptor implements ClientHttpRequestInterceptor {
 
-    final static Logger logger = LoggerFactory.getLogger(LoggingRequestInterceptor.class);
 
+    final static Logger logger = Logger.getLogger(LoggingRequestInterceptor.class);
 
     @Override
-    public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
+    public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution)
+            throws IOException {
         traceRequest(request, body);
         ClientHttpResponse response = execution.execute(request, body);
         traceResponse(response);

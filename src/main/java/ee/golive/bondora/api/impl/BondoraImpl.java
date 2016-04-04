@@ -185,7 +185,7 @@ public class BondoraImpl implements Bondora {
         RestTemplate restTemplate = new RestTemplate(messageConverters);
         List<ClientHttpRequestInterceptor> interceptors = new ArrayList<>();
         interceptors.add(new TokenInterceptor(this));
-        interceptors.add(new LoggingRequestInterceptor());
+        //interceptors.add(new LoggingRequestInterceptor());
         restTemplate.setInterceptors(interceptors);
         return restTemplate;
     }
