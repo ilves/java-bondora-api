@@ -29,7 +29,7 @@ public enum AuctionPurpose {
     Business(3),
     Education(4),
     Travel(5),
-    Vehicle(7),
+    Vehicle(6),
     Other(7),
     Health(8),
     Unknown(102);
