@@ -16,17 +16,41 @@
 
 package ee.golive.bondora.api.domain;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 /**
  * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
  */
 public enum AuctionPurpose {
-    LoanConsolidation,
-    RealEstate,
-    HomeImprovement,
-    Business,
-    Education,
-    Travel,
-    Vehicle,
-    Other,
-    Health
+
+    LoanConsolidation(0),
+    RealEstate(1),
+    HomeImprovement(2),
+    Business(3),
+    Education(4),
+    Travel(5),
+    Vehicle(7),
+    Other(7),
+    Health(8),
+    Unknown(102);
+
+    private final int value;
+
+    AuctionPurpose(int value) {
+        this.value = value;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    @JsonCreator
+    public static AuctionPurpose getEnumFromValue(int value) {
+        for (AuctionPurpose testEnum : values()) {
+            if (testEnum.getValue() == value) {
+                return testEnum;
+            }
+        }
+        throw new IllegalArgumentException("AuctionPurpose value not implemented: " + value);
+    }
 }

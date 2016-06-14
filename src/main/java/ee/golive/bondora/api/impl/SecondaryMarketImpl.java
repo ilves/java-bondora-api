@@ -87,7 +87,7 @@ public class SecondaryMarketImpl implements SecondaryMarketOperations {
 
     private MultiValueMap<String, String> getQueryParameters(String query) {
         MultiValueMap<String, String> queryParameters = new LinkedMultiValueMap<>();
-        if (query != null) {
+        if (query != null && query.length() > 0 && query.indexOf('=') > 0) {
             for(String param : query.split("&")) {
                 String[] params = param.split("=");
                 queryParameters.add(params[0], params[1]);
