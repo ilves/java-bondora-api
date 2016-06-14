@@ -18,7 +18,6 @@ package ee.golive.bondora.api.impl.json;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import ee.golive.bondora.api.domain.LoanDebtManagementEventType;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -49,12 +48,6 @@ abstract class MyInvestmentItemMixin extends LoanCommonMixin {
 
     @JsonProperty("ListedInSecondMarketOn")
     private Date listedInSecondMarketOn;
-
-    @JsonProperty("LatestDebtManagementStage")
-    private LoanDebtManagementEventType latestDebtManagementStage;
-
-    @JsonProperty("LatestDebtManagementDate")
-    private Date latestDebtManagementDate;
 
     @JsonProperty("NoteLoanTransfersMainAmount")
     private BigDecimal noteLoanTransfersMainAmount;

@@ -31,8 +31,6 @@ public class MyInvestmentItem extends LoanCommon {
     private BigDecimal purchasePrice;
     private BigDecimal salePrice;
     private Date listedInSecondMarketOn;
-    private LoanDebtManagementEventType latestDebtManagementStage;
-    private Date latestDebtManagementDate;
     private BigDecimal noteLoanTransfersMainAmount;
     private BigDecimal noteLoanTransfersInterestAmount;
     private BigDecimal noteLoanLateChargesPaid;
@@ -93,22 +91,6 @@ public class MyInvestmentItem extends LoanCommon {
 
     public void setListedInSecondMarketOn(Date listedInSecondMarketOn) {
         this.listedInSecondMarketOn = listedInSecondMarketOn;
-    }
-
-    public LoanDebtManagementEventType getLatestDebtManagementStage() {
-        return latestDebtManagementStage;
-    }
-
-    public void setLatestDebtManagementStage(LoanDebtManagementEventType latestDebtManagementStage) {
-        this.latestDebtManagementStage = latestDebtManagementStage;
-    }
-
-    public Date getLatestDebtManagementDate() {
-        return latestDebtManagementDate;
-    }
-
-    public void setLatestDebtManagementDate(Date latestDebtManagementDate) {
-        this.latestDebtManagementDate = latestDebtManagementDate;
     }
 
     public BigDecimal getNoteLoanTransfersMainAmount() {

@@ -55,6 +55,8 @@ abstract public class LoanCommon extends BondoraObject {
     private Double interestLateAmount;
     private Double penaltyLateAmount;
     private Double lateAmountTotal;
+    private Date latestDebtManagementDate;
+    private LoanDebtManagementEventType latestDebtManagementStage;
 
     public String getLoanPartId() {
         return loanPartId;
@@ -310,5 +312,21 @@ abstract public class LoanCommon extends BondoraObject {
 
     public void setLateAmountTotal(Double lateAmountTotal) {
         this.lateAmountTotal = lateAmountTotal;
+    }
+
+    public Date getLatestDebtManagementDate() {
+        return latestDebtManagementDate;
+    }
+
+    public void setLatestDebtManagementDate(Date latestDebtManagementDate) {
+        this.latestDebtManagementDate = latestDebtManagementDate;
+    }
+
+    public LoanDebtManagementEventType getLatestDebtManagementStage() {
+        return latestDebtManagementStage;
+    }
+
+    public void setLatestDebtManagementStage(LoanDebtManagementEventType latestDebtManagementStage) {
+        this.latestDebtManagementStage = latestDebtManagementStage;
     }
 }

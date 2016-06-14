@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import ee.golive.bondora.api.domain.AuctionIncomeVerificationStatus;
 import ee.golive.bondora.api.domain.AuctionPurpose;
+import ee.golive.bondora.api.domain.LoanDebtManagementEventType;
 import ee.golive.bondora.api.domain.Sex;
 
 import java.math.BigDecimal;
@@ -126,4 +127,10 @@ abstract class LoanCommonMixin extends BondoraObjectMixin {
 
     @JsonProperty("LateAmountTotal")
     private BigDecimal lateAmountTotal;
+
+    @JsonProperty("LatestDebtManagementDate")
+    private Date latestDebtManagementDate;
+
+    @JsonProperty("LatestDebtManagementStage")
+    private LoanDebtManagementEventType latestDebtManagementStage;
 }
