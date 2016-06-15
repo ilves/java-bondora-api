@@ -133,4 +133,7 @@ abstract class LoanCommonMixin extends BondoraObjectMixin {
 
     @JsonProperty("LatestDebtManagementStage")
     private LoanDebtManagementEventType latestDebtManagementStage;
+
+    @JsonProperty("LastPaymentDate")
+    private Date lastPaymentDate;
 }

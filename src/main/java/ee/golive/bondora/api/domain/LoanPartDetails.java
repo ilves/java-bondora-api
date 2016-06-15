@@ -17,7 +17,6 @@
 package ee.golive.bondora.api.domain;
 
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,7 +26,6 @@ public class LoanPartDetails extends LoanCommon {
     private BigDecimal initialInterest;
     private String loanId;
     private Integer loanDuration;
-    private Date lastPaymentDate;
     private BigDecimal repaidInterestsCurrentOwner;
     private BigDecimal lateChargesPaidCurrentOwner;
     private BigDecimal repaidTotalCurrentOwner;
@@ -58,14 +56,6 @@ public class LoanPartDetails extends LoanCommon {
 
     public void setLoanDuration(Integer loanDuration) {
         this.loanDuration = loanDuration;
-    }
-
-    public Date getLastPaymentDate() {
-        return lastPaymentDate;
-    }
-
-    public void setLastPaymentDate(Date lastPaymentDate) {
-        this.lastPaymentDate = lastPaymentDate;
     }
 
     public BigDecimal getRepaidInterestsCurrentOwner() {

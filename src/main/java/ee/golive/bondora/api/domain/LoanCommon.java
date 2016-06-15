@@ -23,6 +23,7 @@ import java.util.Date;
  * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
  */
 abstract public class LoanCommon extends BondoraObject {
+    
     private String loanPartId;
     private BigDecimal amount;
     private String auctionId;
@@ -57,6 +58,7 @@ abstract public class LoanCommon extends BondoraObject {
     private Double lateAmountTotal;
     private Date latestDebtManagementDate;
     private LoanDebtManagementEventType latestDebtManagementStage;
+    private Date lastPaymentDate;
 
     public String getLoanPartId() {
         return loanPartId;
@@ -328,5 +330,13 @@ abstract public class LoanCommon extends BondoraObject {
 
     public void setLatestDebtManagementStage(LoanDebtManagementEventType latestDebtManagementStage) {
         this.latestDebtManagementStage = latestDebtManagementStage;
+    }
+
+    public Date getLastPaymentDate() {
+        return lastPaymentDate;
+    }
+
+    public void setLastPaymentDate(Date lastPaymentDate) {
+        this.lastPaymentDate = lastPaymentDate;
     }
 }

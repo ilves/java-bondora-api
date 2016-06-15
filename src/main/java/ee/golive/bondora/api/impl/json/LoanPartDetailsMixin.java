@@ -23,7 +23,6 @@ import ee.golive.bondora.api.domain.LoanTransfer;
 import ee.golive.bondora.api.domain.ScheduledPayment;
 
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -40,9 +39,6 @@ abstract class LoanPartDetailsMixin extends LoanCommonMixin {
 
     @JsonProperty("LoanDuration")
     private Integer loanDuration;
-
-    @JsonProperty("LastPaymentDate")
-    private Date lastPaymentDate;
 
     @JsonProperty("RepaidInterestsCurrentOwner")
     private BigDecimal repaidInterestsCurrentOwner;
