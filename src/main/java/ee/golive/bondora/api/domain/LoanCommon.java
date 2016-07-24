@@ -23,7 +23,7 @@ import java.util.Date;
  * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
  */
 abstract public class LoanCommon extends BondoraObject {
-    
+
     private String loanPartId;
     private BigDecimal amount;
     private String auctionId;
@@ -52,6 +52,7 @@ abstract public class LoanCommon extends BondoraObject {
     private Double interestRepaid;
     private BigDecimal lateAmountPaid;
     private BigDecimal principalRemaining;
+
     private Double principalLateAmount;
     private Double interestLateAmount;
     private Double penaltyLateAmount;

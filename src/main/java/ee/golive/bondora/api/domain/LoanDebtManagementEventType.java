@@ -44,7 +44,8 @@ public enum LoanDebtManagementEventType {
     Deceased(38),
     DebtRestructuring(39),
     Bankruptcy(40),
-    CriminalCase(41);
+    CriminalCase(41),
+    WriteOff(42);
 
     private final int value;
 
