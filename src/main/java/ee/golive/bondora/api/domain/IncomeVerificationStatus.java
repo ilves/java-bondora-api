@@ -16,12 +16,35 @@
 
 package ee.golive.bondora.api.domain;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 /**
  * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
  */
 public enum IncomeVerificationStatus {
-    NotVerified,
-    VerifiedByPhone,
-    VerifiedByOtherDocument,
-    VerifiedByBankStatement
+    
+    NotVerified(1),
+    VerifiedByPhone(2),
+    VerifiedByOtherDocument(3),
+    VerifiedByBankStatement(4);
+
+    private final int value;
+
+    IncomeVerificationStatus(int value) {
+        this.value = value;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    @JsonCreator
+    public static IncomeVerificationStatus getEnumFromValue(int value) {
+        for (IncomeVerificationStatus testEnum : values()) {
+            if (testEnum.getValue() == value) {
+                return testEnum;
+            }
+        }
+        throw new IllegalArgumentException();
+    }
 }
