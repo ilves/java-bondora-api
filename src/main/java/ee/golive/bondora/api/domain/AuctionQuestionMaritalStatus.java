@@ -22,6 +22,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
  * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
  */
 public enum AuctionQuestionMaritalStatus {
+
+    Unknown(-1),
     Married(1),
     Cohabitant(2),
     Single(3),
@@ -39,12 +41,12 @@ public enum AuctionQuestionMaritalStatus {
     }
 
     @JsonCreator
-    public static AuctionQuestionMaritalStatus getEnumFromValue(int value) {
+    public static AuctionQuestionMaritalStatus getEnumFromValue(Integer value) {
         for (AuctionQuestionMaritalStatus testEnum : values()) {
             if (testEnum.getValue() == value) {
                 return testEnum;
             }
         }
-        throw new IllegalArgumentException();
+        return Unknown;
     }
 }

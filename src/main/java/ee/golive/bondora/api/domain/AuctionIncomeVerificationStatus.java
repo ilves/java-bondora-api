@@ -22,6 +22,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
  * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
  */
 public enum AuctionIncomeVerificationStatus {
+
+    Unknown(-1),
     NotVerified(1),
     VerifiedByPhone(2),
     VerifiedByOtherDocument(3),
@@ -38,12 +40,12 @@ public enum AuctionIncomeVerificationStatus {
     }
 
     @JsonCreator
-    public static AuctionIncomeVerificationStatus getEnumFromValue(int value) {
+    public static AuctionIncomeVerificationStatus getEnumFromValue(Integer value) {
         for (AuctionIncomeVerificationStatus testEnum : values()) {
             if (testEnum.getValue() == value) {
                 return testEnum;
             }
         }
-        throw new IllegalArgumentException();
+        return Unknown;
     }
 }

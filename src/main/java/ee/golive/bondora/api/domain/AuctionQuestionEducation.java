@@ -22,6 +22,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
  * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
  */
 public enum AuctionQuestionEducation {
+
+    Unknown(-1),
     Primary(1),
     Basic(2),
     Vocational(3),
@@ -39,12 +41,12 @@ public enum AuctionQuestionEducation {
     }
 
     @JsonCreator
-    public static AuctionQuestionEducation getEnumFromValue(int value) {
+    public static AuctionQuestionEducation getEnumFromValue(Integer value) {
         for (AuctionQuestionEducation testEnum : values()) {
             if (testEnum.getValue() == value) {
                 return testEnum;
             }
         }
-        throw new IllegalArgumentException();
+        return Unknown;
     }
 }

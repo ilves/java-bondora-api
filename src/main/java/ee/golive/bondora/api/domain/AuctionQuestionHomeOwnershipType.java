@@ -22,6 +22,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
  * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
  */
 public enum AuctionQuestionHomeOwnershipType {
+
+    Unknown(-1),
     Homeless(0),
     Owner(1),
     LivingWithParents(2),
@@ -44,12 +46,12 @@ public enum AuctionQuestionHomeOwnershipType {
     }
 
     @JsonCreator
-    public static AuctionQuestionHomeOwnershipType getEnumFromValue(int value) {
+    public static AuctionQuestionHomeOwnershipType getEnumFromValue(Integer value) {
         for (AuctionQuestionHomeOwnershipType testEnum : values()) {
             if (testEnum.getValue() == value) {
                 return testEnum;
             }
         }
-        throw new IllegalArgumentException();
+        return Unknown;
     }
 }

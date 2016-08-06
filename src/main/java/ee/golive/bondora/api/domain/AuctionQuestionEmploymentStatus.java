@@ -22,6 +22,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
  * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
  */
 public enum  AuctionQuestionEmploymentStatus {
+
+    Unknown(-1),
     UnEmployed(1),
     PartiallyEmployed(2),
     FullyEmployed(3),
@@ -40,12 +42,12 @@ public enum  AuctionQuestionEmploymentStatus {
     }
 
     @JsonCreator
-    public static AuctionQuestionEmploymentStatus getEnumFromValue(int value) {
+    public static AuctionQuestionEmploymentStatus getEnumFromValue(Integer value) {
         for (AuctionQuestionEmploymentStatus testEnum : values()) {
             if (testEnum.getValue() == value) {
                 return testEnum;
             }
         }
-        throw new IllegalArgumentException();
+        return Unknown;
     }
 }
