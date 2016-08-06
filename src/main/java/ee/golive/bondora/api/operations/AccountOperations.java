@@ -27,5 +27,5 @@ import ee.golive.bondora.api.exceptions.BondoraException;
  */
 public interface AccountOperations {
     ApiResultSingle<MyAccountBalance> getAccountBalance() throws BondoraException;
-    ApiResultList<MyInvestmentItem> getInvestments() throws BondoraException;
+    ApiResultList<MyInvestmentItem> getInvestments(String query) throws BondoraException;
 }

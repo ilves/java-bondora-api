@@ -18,11 +18,14 @@ package ee.golive.bondora.api.impl;
 
 import ee.golive.bondora.api.domain.MyAccountBalance;
 import ee.golive.bondora.api.domain.MyInvestmentItem;
+import ee.golive.bondora.api.domain.SecondaryMarketItem;
 import ee.golive.bondora.api.domain.responses.ApiResultList;
 import ee.golive.bondora.api.domain.responses.ApiResultSingle;
 import ee.golive.bondora.api.exceptions.BondoraException;
 import ee.golive.bondora.api.operations.AccountOperations;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 
 /**
  * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
@@ -43,9 +46,20 @@ public class AccountImpl implements AccountOperations {
     }
 
     @Override
-    public ApiResultList<MyInvestmentItem> getInvestments() throws BondoraException {
-        ParameterizedTypeReference<ApiResultList<MyInvestmentItem>> reference =
-                new ParameterizedTypeReference<ApiResultList<MyInvestmentItem>>() {};
-        return (api.fetchObject(api.apiUrl("account/investments"), reference));
+    public ApiResultList<MyInvestmentItem> getInvestments(String query) throws BondoraException {
+        ParameterizedTypeReference<ApiResultList<MyInvestmentItem>> reference
+                = new ParameterizedTypeReference<ApiResultList<MyInvestmentItem>>() {};
+        return (api.fetchObject(api.apiUrl("secondarymarket"), getQueryParameters(query), reference));
+    }
+
+    private MultiValueMap<String, String> getQueryParameters(String query) {
+        MultiValueMap<String, String> queryParameters = new LinkedMultiValueMap<>();
+        if (query != null) {
+            for(String param : query.split("&")) {
+                String[] params = param.split("=");
+                queryParameters.add(params[0], params[1]);
+            }
+        }
+        return queryParameters;
     }
 }
