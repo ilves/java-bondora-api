@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
  */
 public enum AuctionPurpose {
 
+    Unknown(-1),
     LoanConsolidation(0),
     RealEstate(1),
     HomeImprovement(2),
@@ -32,7 +33,10 @@ public enum AuctionPurpose {
     Vehicle(6),
     Other(7),
     Health(8),
-    Unknown(102);
+    WorkingCapitalFinancing(101),
+    PurchaseOfMachineryEquipment(102),
+    AcquisitionOfRealEstate(108),
+    OtherBusiness(110);
 
     private final int value;
 
@@ -45,12 +49,12 @@ public enum AuctionPurpose {
     }
 
     @JsonCreator
-    public static AuctionPurpose getEnumFromValue(int value) {
+    public static AuctionPurpose getEnumFromValue(Integer value) {
         for (AuctionPurpose testEnum : values()) {
             if (testEnum.getValue() == value) {
                 return testEnum;
             }
         }
-        throw new IllegalArgumentException("AuctionPurpose value not implemented: " + value);
+        return Unknown;
     }
 }

@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
  */
 public enum  AuctionQuestionOccupationArea {
 
-    Unknown(0),
+    Unknown(-1),
     Other(1),
     Mining(2),
     Processing(3),
