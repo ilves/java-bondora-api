@@ -17,10 +17,7 @@
 package ee.golive.bondora.api;
 
 import ee.golive.bondora.api.impl.BondoraImpl;
-import ee.golive.bondora.api.operations.AccountOperations;
-import ee.golive.bondora.api.operations.AuctionOperations;
-import ee.golive.bondora.api.operations.OAuthOperations;
-import ee.golive.bondora.api.operations.SecondaryMarketOperations;
+import ee.golive.bondora.api.operations.*;
 
 /**
  * Interface specifying a basic set of operations for interacting with Bondora.
@@ -47,6 +44,12 @@ public interface Bondora {
      * @return {@link AccountOperations}
      */
     AccountOperations getAccountOperations();
+
+    /**
+     * API for working with report operations.
+     * @return {@link AccountOperations}
+     */
+    ReportOperations getReportOperations();
 
     /**
      * API for working with Oauth related operations.

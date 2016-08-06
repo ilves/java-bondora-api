@@ -66,5 +66,6 @@ public class BondoraModule extends SimpleModule {
         context.setMixInAnnotations(Liability.class, LiabilityMixin.class);
         context.setMixInAnnotations(Debt.class, DeptMixin.class);
         context.setMixInAnnotations(AuctionExtended.class, AuctionExtendedMixin.class);
+        context.setMixInAnnotations(LoanDatasetItem.class, LoanDatasetItemMixin.class);
     }
 }

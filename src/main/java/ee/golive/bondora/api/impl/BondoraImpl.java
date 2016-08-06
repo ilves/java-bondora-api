@@ -22,10 +22,7 @@ import ee.golive.bondora.api.BondoraConfig;
 import ee.golive.bondora.api.domain.responses.ApiResult;
 import ee.golive.bondora.api.exceptions.BondoraException;
 import ee.golive.bondora.api.impl.json.BondoraModule;
-import ee.golive.bondora.api.operations.AccountOperations;
-import ee.golive.bondora.api.operations.AuctionOperations;
-import ee.golive.bondora.api.operations.OAuthOperations;
-import ee.golive.bondora.api.operations.SecondaryMarketOperations;
+import ee.golive.bondora.api.operations.*;
 import ee.golive.bondora.api.util.URIBuilder;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -61,6 +58,8 @@ public class BondoraImpl implements Bondora {
 
     private AccountOperations accountOperations;
 
+    private ReportOperations reportOperations;
+
     private BondoraConfig config;
 
     public BondoraImpl(BondoraConfig config, String accessToken) {
@@ -81,6 +80,7 @@ public class BondoraImpl implements Bondora {
         auctionOperations = new AuctionImpl(this);
         accountOperations = new AccountImpl(this);
         secondaryMarketOperations = new SecondaryMarketImpl(this);
+        reportOperations = new ReportImpl(this);
         oAuthOperations = new OAuthImpl(this);
         restTemplate = createRestTemplate();
     }
@@ -102,6 +102,11 @@ public class BondoraImpl implements Bondora {
     @Override
     public AccountOperations getAccountOperations() {
         return accountOperations;
+    }
+
+    @Override
+    public ReportOperations getReportOperations() {
+        return reportOperations;
     }
 
     @Override
