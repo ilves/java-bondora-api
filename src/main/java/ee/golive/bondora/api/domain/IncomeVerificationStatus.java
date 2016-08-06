@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
  * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
  */
 public enum IncomeVerificationStatus {
-    
+
     NotVerified(1),
     VerifiedByPhone(2),
     VerifiedByOtherDocument(3),

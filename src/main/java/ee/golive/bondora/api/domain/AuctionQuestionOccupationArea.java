@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
  */
 public enum  AuctionQuestionOccupationArea {
 
+    Unknown(0),
     Other(1),
     Mining(2),
     Processing(3),
@@ -54,12 +55,12 @@ public enum  AuctionQuestionOccupationArea {
     }
 
     @JsonCreator
-    public static AuctionQuestionOccupationArea getEnumFromValue(int value) {
+    public static AuctionQuestionOccupationArea getEnumFromValue(Integer value) {
         for (AuctionQuestionOccupationArea testEnum : values()) {
             if (testEnum.getValue() == value) {
                 return testEnum;
             }
         }
-        throw new IllegalArgumentException();
+        return Unknown;
     }
 }
