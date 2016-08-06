@@ -18,10 +18,7 @@ package ee.golive.bondora.api.impl.json;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import ee.golive.bondora.api.domain.AuctionIncomeVerificationStatus;
-import ee.golive.bondora.api.domain.AuctionPurpose;
-import ee.golive.bondora.api.domain.LoanDebtManagementEventType;
-import ee.golive.bondora.api.domain.Sex;
+import ee.golive.bondora.api.domain.*;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -66,7 +63,7 @@ abstract class LoanCommonMixin extends BondoraObjectMixin {
     private AuctionPurpose useOfLoan;
 
     @JsonProperty("IncomeVerificationStatus")
-    private AuctionIncomeVerificationStatus incomeVerificationStatus;
+    private IncomeVerificationStatus incomeVerificationStatus;
 
     @JsonProperty("LoanStatusCode")
     private Integer loanStatusCode;

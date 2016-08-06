@@ -32,7 +32,7 @@ public class Auction extends BondoraObject {
     private Date loanApplicationStartedDate;
     private Integer applicationSignedHour;
     private Integer applicationSignedWeekday;
-    private AuctionIncomeVerificationStatus verificationType;
+    private IncomeVerificationStatus verificationType;
     private LanguageCode languageCode;
     private Integer age;
     private Sex gender;
@@ -138,11 +138,11 @@ public class Auction extends BondoraObject {
         this.applicationSignedWeekday = applicationSignedWeekday;
     }
 
-    public AuctionIncomeVerificationStatus getVerificationType() {
+    public IncomeVerificationStatus getVerificationType() {
         return verificationType;
     }
 
-    public void setVerificationType(AuctionIncomeVerificationStatus verificationType) {
+    public void setVerificationType(IncomeVerificationStatus verificationType) {
         this.verificationType = verificationType;
     }
 

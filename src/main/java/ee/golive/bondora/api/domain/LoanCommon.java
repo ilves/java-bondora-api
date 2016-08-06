@@ -35,7 +35,7 @@ abstract public class LoanCommon extends BondoraObject {
     private String rating;
     private BigDecimal interest;
     private AuctionPurpose useOfLoan;
-    private AuctionIncomeVerificationStatus incomeVerificationStatus;
+    private IncomeVerificationStatus incomeVerificationStatus;
     private Integer loanStatusCode;
     private String userName;
     private Sex gender;
@@ -149,11 +149,11 @@ abstract public class LoanCommon extends BondoraObject {
         this.useOfLoan = useOfLoan;
     }
 
-    public AuctionIncomeVerificationStatus getIncomeVerificationStatus() {
+    public IncomeVerificationStatus getIncomeVerificationStatus() {
         return incomeVerificationStatus;
     }
 
-    public void setIncomeVerificationStatus(AuctionIncomeVerificationStatus incomeVerificationStatus) {
+    public void setIncomeVerificationStatus(IncomeVerificationStatus incomeVerificationStatus) {
         this.incomeVerificationStatus = incomeVerificationStatus;
     }
 

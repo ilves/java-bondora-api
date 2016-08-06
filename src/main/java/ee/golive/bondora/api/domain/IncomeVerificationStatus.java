@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
  */
 public enum IncomeVerificationStatus {
 
+    Unknown(-1),
     NotVerified(1),
     VerifiedByPhone(2),
     VerifiedByOtherDocument(3),
@@ -39,12 +40,12 @@ public enum IncomeVerificationStatus {
     }
 
     @JsonCreator
-    public static IncomeVerificationStatus getEnumFromValue(int value) {
+    public static IncomeVerificationStatus getEnumFromValue(Integer value) {
         for (IncomeVerificationStatus testEnum : values()) {
             if (testEnum.getValue() == value) {
                 return testEnum;
             }
         }
-        throw new IllegalArgumentException();
+        return Unknown;
     }
 }

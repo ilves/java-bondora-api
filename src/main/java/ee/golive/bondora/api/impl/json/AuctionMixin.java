@@ -54,7 +54,7 @@ abstract class AuctionMixin extends BondoraObjectMixin {
     private Integer applicationSignedWeekday;
 
 	@JsonProperty("VerificationType")
-    private AuctionIncomeVerificationStatus verificationType;
+    private IncomeVerificationStatus verificationType;
 
 	@JsonProperty("LanguageCode")
     private LanguageCode languageCode;
