@@ -49,7 +49,7 @@ public class AccountImpl implements AccountOperations {
     public ApiResultList<MyInvestmentItem> getInvestments(String query) throws BondoraException {
         ParameterizedTypeReference<ApiResultList<MyInvestmentItem>> reference
                 = new ParameterizedTypeReference<ApiResultList<MyInvestmentItem>>() {};
-        return (api.fetchObject(api.apiUrl("secondarymarket"), getQueryParameters(query), reference));
+        return (api.fetchObject(api.apiUrl("account/investments"), getQueryParameters(query), reference));
     }
 
     private MultiValueMap<String, String> getQueryParameters(String query) {

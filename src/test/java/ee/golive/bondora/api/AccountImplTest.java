@@ -51,7 +51,7 @@ public class AccountImplTest extends AbstractBondoraApiTest {
         mockServer.expect(requestTo(bondoraUrl("account/investments")))
                 .andExpect(method(GET))
                 .andRespond(withSuccess(jsonResource("myInvestments"), MediaType.APPLICATION_JSON));
-        List<MyInvestmentItem> investments = bondora.getAccountOperations().getInvestments().getPayload();
+        List<MyInvestmentItem> investments = bondora.getAccountOperations().getInvestments(null).getPayload();
         assertEquals(2, investments.size());
         assertEquals("c4ffc8a5-ac36-4896-9381-b242f13996da", investments.get(1).getLoanPartId());
         assertEquals(AuctionPurpose.Health, investments.get(0).getUseOfLoan());
