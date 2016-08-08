@@ -23,12 +23,15 @@ import ee.golive.bondora.api.domain.responses.ApiResult;
 import ee.golive.bondora.api.exceptions.BondoraException;
 import ee.golive.bondora.api.impl.json.BondoraModule;
 import ee.golive.bondora.api.operations.*;
+import ee.golive.bondora.api.util.HttpClientFactory;
 import ee.golive.bondora.api.util.URIBuilder;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
@@ -188,6 +191,7 @@ public class BondoraImpl implements Bondora {
     private RestTemplate createRestTemplate() {
         List<HttpMessageConverter<?>> messageConverters = getMessageConverters();
         RestTemplate restTemplate = new RestTemplate(messageConverters);
+        restTemplate.setRequestFactory(HttpClientFactory.getHttpsClient());
         List<ClientHttpRequestInterceptor> interceptors = new ArrayList<>();
         interceptors.add(new TokenInterceptor(this));
         //interceptors.add(new LoggingRequestInterceptor());
