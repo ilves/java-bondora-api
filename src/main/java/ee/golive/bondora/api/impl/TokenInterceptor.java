@@ -42,7 +42,6 @@ public class TokenInterceptor implements ClientHttpRequestInterceptor {
         if (!req.getURI().getPath().contains("oauth/access_token")) {
             headers.add("Authorization", "Bearer " + api.getAccessToken());
         }
-        headers.add("Accept-Encoding", "gzip, deflate");
         return ex.execute(req, bdy);
     }
 
