@@ -33,4 +33,12 @@ abstract class ApiResultListMixin<T> extends ApiResultMixin {
     @JsonProperty("TotalCount")
     private Integer totalCount;
 
+    @JsonProperty("PageSize")
+    private Integer pageSize;
+
+    @JsonProperty("PageNr")
+    private Integer pageNr;
+
+    @JsonProperty("Count")
+    private Integer count;
 }

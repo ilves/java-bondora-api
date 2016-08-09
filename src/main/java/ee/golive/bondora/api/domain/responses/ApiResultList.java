@@ -16,6 +16,7 @@
 
 package ee.golive.bondora.api.domain.responses;
 
+
 import java.util.List;
 
 /**
@@ -25,6 +26,9 @@ public class ApiResultList<T> extends ApiResult {
 
     private List<T> payload;
     private Integer totalCount;
+    private Integer pageSize;
+    private Integer pageNr;
+    private Integer count;
 
     public List<T> getPayload() {
         return payload;
@@ -40,5 +44,29 @@ public class ApiResultList<T> extends ApiResult {
 
     public void setTotalCount(Integer totalCount) {
         this.totalCount = totalCount;
+    }
+
+    public Integer getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public Integer getPageNr() {
+        return pageNr;
+    }
+
+    public void setPageNr(Integer pageNr) {
+        this.pageNr = pageNr;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
     }
 }
