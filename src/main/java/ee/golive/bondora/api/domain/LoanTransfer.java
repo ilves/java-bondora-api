@@ -23,7 +23,7 @@ import java.util.Date;
  * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
  */
 public class LoanTransfer extends BondoraObject {
-    
+
     private Date date;
     private BigDecimal principalAmount;
     private BigDecimal interestAmount;

@@ -21,6 +21,7 @@ import ee.golive.bondora.api.domain.SecondMarketSaleResponse;
 import ee.golive.bondora.api.domain.SecondaryMarketItem;
 import ee.golive.bondora.api.domain.SecondaryMarketItemSummary;
 import ee.golive.bondora.api.domain.requests.SecondMarketBuyRequest;
+import ee.golive.bondora.api.domain.requests.SecondMarketCancelRequest;
 import ee.golive.bondora.api.domain.requests.SecondMarketSaleRequest;
 import ee.golive.bondora.api.domain.responses.ApiResult;
 import ee.golive.bondora.api.domain.responses.ApiResultList;
@@ -30,6 +31,8 @@ import ee.golive.bondora.api.operations.SecondaryMarketOperations;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+
+import java.util.List;
 
 /**
  * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
@@ -82,7 +85,12 @@ public class SecondaryMarketImpl implements SecondaryMarketOperations {
 
     @Override
     public ApiResult cancel(String id) throws BondoraException {
-        return api.postObject(api.apiUrl("secondarymarket/cancel/" + id), ApiResult.class);
+        return api.postObject(api.apiUrl("secondarymarket/" + id + "/cancel"), ApiResult.class);
+    }
+
+    @Override
+    public ApiResult cancel(SecondMarketCancelRequest request) throws BondoraException {
+        return api.postObject(api.apiUrl("secondarymarket/cancel"), request, ApiResult.class);
     }
 
     private MultiValueMap<String, String> getQueryParameters(String query) {

@@ -20,6 +20,7 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import ee.golive.bondora.api.domain.*;
 import ee.golive.bondora.api.domain.requests.BidRequest;
 import ee.golive.bondora.api.domain.requests.SecondMarketBuyRequest;
+import ee.golive.bondora.api.domain.requests.SecondMarketCancelRequest;
 import ee.golive.bondora.api.domain.requests.SecondMarketSaleRequest;
 import ee.golive.bondora.api.domain.responses.ApiError;
 import ee.golive.bondora.api.domain.responses.ApiResult;
@@ -67,5 +68,6 @@ public class BondoraModule extends SimpleModule {
         context.setMixInAnnotations(Debt.class, DeptMixin.class);
         context.setMixInAnnotations(AuctionExtended.class, AuctionExtendedMixin.class);
         context.setMixInAnnotations(LoanDatasetItem.class, LoanDatasetItemMixin.class);
+        context.setMixInAnnotations(SecondMarketCancelRequest.class, SecondMarketCancelRequestMixin.class);
     }
 }
