@@ -90,7 +90,7 @@ public class SecondaryMarketImplTest extends AbstractBondoraApiTest {
     @Test
     public void cancel() throws Exception {
         String id = "422038e9-13e1-4f83-9e33-964611e11336";
-        mockServer.expect(requestTo(bondoraUrl("secondarymarket/cancel/"+id)))
+        mockServer.expect(requestTo(bondoraUrl("secondarymarket/"+id+"/cancel")))
                 .andExpect(method(POST))
                 .andRespond(withSuccess(jsonResource("success"), MediaType.APPLICATION_JSON));
         assertEquals(true, bondora.getSecondMarketOperations().cancel(id).isSuccess());
