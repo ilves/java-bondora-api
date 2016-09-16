@@ -29,17 +29,21 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
+import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -191,6 +195,7 @@ public class BondoraImpl implements Bondora {
     private RestTemplate createRestTemplate() {
         List<HttpMessageConverter<?>> messageConverters = getMessageConverters();
         RestTemplate restTemplate = new RestTemplate(messageConverters);
+        restTemplate.setErrorHandler(new MyResponseErrorHandler());
         restTemplate.setRequestFactory(HttpClientFactory.getHttpsClient());
         List<ClientHttpRequestInterceptor> interceptors = new ArrayList<>();
         interceptors.add(new TokenInterceptor(this));
@@ -205,5 +210,22 @@ public class BondoraImpl implements Bondora {
         messageConverters.add(new FormHttpMessageConverter());
         messageConverters.add(getJsonMessageConverter());
         return messageConverters;
+    }
+
+    public class MyResponseErrorHandler implements ResponseErrorHandler {
+
+
+        @Override
+        public void handleError(ClientHttpResponse clienthttpresponse) throws IOException {
+
+        }
+
+        @Override
+        public boolean hasError(ClientHttpResponse clienthttpresponse) throws IOException {
+            if (clienthttpresponse.getStatusCode() != HttpStatus.OK) {
+                return true;
+            }
+            return false;
+        }
     }
 }

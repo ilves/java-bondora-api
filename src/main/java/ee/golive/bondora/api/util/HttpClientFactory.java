@@ -32,6 +32,7 @@ public class HttpClientFactory {
         try {
             SSLContext sslContext = SSLContexts.custom().loadTrustMaterial((x509Certificates, s) -> true).build();
             HttpClientBuilder builder = HttpClientBuilder.create().setSSLContext(sslContext);
+
             return new HttpComponentsClientHttpRequestFactory(builder.build());
         } catch (Exception e) {
 
