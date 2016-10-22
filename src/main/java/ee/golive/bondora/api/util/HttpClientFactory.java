@@ -16,9 +16,13 @@
 
 package ee.golive.bondora.api.util;
 
+import org.apache.http.HttpHost;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.conn.routing.HttpRoute;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.ssl.SSLContexts;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 
@@ -32,7 +36,12 @@ public class HttpClientFactory {
         try {
             SSLContext sslContext = SSLContexts.custom().loadTrustMaterial((x509Certificates, s) -> true).build();
             HttpClientBuilder builder = HttpClientBuilder.create().setSSLContext(sslContext);
-
+            PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager();
+            connManager.setMaxTotal(5);
+            connManager.setDefaultMaxPerRoute(4);
+            HttpHost host = new HttpHost("api.bondora.com", 443);
+            connManager.setMaxPerRoute(new HttpRoute(host), 5);
+            builder.setConnectionManager(connManager);
             return new HttpComponentsClientHttpRequestFactory(builder.build());
         } catch (Exception e) {
 
