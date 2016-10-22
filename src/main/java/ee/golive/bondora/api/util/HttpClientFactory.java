@@ -21,6 +21,7 @@ import org.apache.http.HeaderElementIterator;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.UserTokenHandler;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.conn.ConnectionKeepAliveStrategy;
 import org.apache.http.conn.routing.HttpRoute;
@@ -69,9 +70,16 @@ public class HttpClientFactory {
             connManager.setMaxPerRoute(new HttpRoute(host), 5);
             builder.setConnectionManager(connManager);
 
+            UserTokenHandler userTokenHandler = new UserTokenHandler() {
+                public Object getUserToken(HttpContext context) {
+                    return context.getAttribute("api");
+                }
+            };
+
             CloseableHttpClient client = HttpClients.custom()
                     .setKeepAliveStrategy(myStrategy)
                     .setConnectionManager(connManager)
+                    .setUserTokenHandler(userTokenHandler)
                     .build();
 
 
