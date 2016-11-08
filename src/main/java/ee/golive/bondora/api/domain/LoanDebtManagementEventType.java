@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
  * @author Taavi Ilves, Golive OÜ, http://www.golive.ee/
  */
 public enum LoanDebtManagementEventType {
+    Unknown(0),
     Message(1),
     SentToBailiff(2),
     ExpeditedPaymentOrderIssued(7),
@@ -33,6 +34,11 @@ public enum LoanDebtManagementEventType {
     DeceasedCustomer(22),
     CallMade(23),
     DebtNotificationSmsSent(24),
+    Un1(25),
+    Un2(26),
+    Un3(27),
+    Un4(28),
+    Un5(29),
     InHouseCollection(30),
     DCA1(31),
     CurePeriod(32),
@@ -64,6 +70,6 @@ public enum LoanDebtManagementEventType {
                 return testEnum;
             }
         }
-        throw new IllegalArgumentException();
+        return Unknown;
     }
 }
