@@ -20,13 +20,10 @@ import org.apache.http.HeaderElement;
 import org.apache.http.HeaderElementIterator;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.UserTokenHandler;
-import org.apache.http.client.config.RequestConfig;
 import org.apache.http.conn.ConnectionKeepAliveStrategy;
 import org.apache.http.conn.routing.HttpRoute;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
@@ -64,7 +61,7 @@ public class HttpClientFactory {
             SSLContext sslContext = SSLContexts.custom().loadTrustMaterial((x509Certificates, s) -> true).build();
             HttpClientBuilder builder = HttpClientBuilder.create().setSSLContext(sslContext);
             PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager();
-            connManager.setMaxTotal(5);
+            connManager.setMaxTotal(10);
             connManager.setDefaultMaxPerRoute(4);
             HttpHost host = new HttpHost("api.bondora.com", 443);
             connManager.setMaxPerRoute(new HttpRoute(host), 5);
@@ -77,7 +74,7 @@ public class HttpClientFactory {
             };
 
             CloseableHttpClient client = HttpClients.custom()
-                    .setKeepAliveStrategy(myStrategy)
+                    //.setKeepAliveStrategy(myStrategy)
                     .setConnectionManager(connManager)
                     .setUserTokenHandler(userTokenHandler)
                     .build();
