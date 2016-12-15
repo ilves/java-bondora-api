@@ -23,13 +23,13 @@ import ee.golive.bondora.api.domain.responses.ApiResult;
 import ee.golive.bondora.api.exceptions.BondoraException;
 import ee.golive.bondora.api.impl.json.BondoraModule;
 import ee.golive.bondora.api.operations.*;
-import ee.golive.bondora.api.util.HttpClientFactory;
 import ee.golive.bondora.api.util.URIBuilder;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.converter.FormHttpMessageConverter;
@@ -67,18 +67,21 @@ public class BondoraImpl implements Bondora {
 
     private BondoraConfig config;
 
-    public BondoraImpl(BondoraConfig config, String accessToken) {
+    private ClientHttpRequestFactory httpRequestFactory;
+
+    public BondoraImpl(ClientHttpRequestFactory httpRequestFactory, BondoraConfig config, String accessToken) {
         this.accessToken = accessToken;
         this.config = config;
+        this.httpRequestFactory = httpRequestFactory;
         initialize();
     }
 
-    public BondoraImpl(BondoraConfig config) {
-        this(config, null);
+    public BondoraImpl(ClientHttpRequestFactory httpRequestFactory, BondoraConfig config) {
+        this(httpRequestFactory, config, null);
     }
 
-    public BondoraImpl() {
-        this(null);
+    public BondoraImpl(ClientHttpRequestFactory httpRequestFactory) {
+        this(httpRequestFactory, null);
     }
 
     private void initialize() {
@@ -194,7 +197,7 @@ public class BondoraImpl implements Bondora {
         List<HttpMessageConverter<?>> messageConverters = getMessageConverters();
         RestTemplate restTemplate = new RestTemplate(messageConverters);
         restTemplate.setErrorHandler(new MyResponseErrorHandler());
-        restTemplate.setRequestFactory(HttpClientFactory.getHttpsClient());
+        restTemplate.setRequestFactory(httpRequestFactory);
         List<ClientHttpRequestInterceptor> interceptors = new ArrayList<>();
         interceptors.add(new TokenInterceptor(this));
         //interceptors.add(new LoggingRequestInterceptor());

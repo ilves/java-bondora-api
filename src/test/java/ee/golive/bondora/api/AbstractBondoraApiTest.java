@@ -20,8 +20,11 @@ import ee.golive.bondora.api.impl.BondoraImpl;
 import org.junit.Before;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.RestTemplate;
+
+import static org.mockito.Mockito.mock;
 
 public class AbstractBondoraApiTest {
 
@@ -30,9 +33,11 @@ public class AbstractBondoraApiTest {
     protected MockRestServiceServer mockServer;
     protected MockRestServiceServer appFacebookMockServer;
     protected BondoraConfig config;
+    protected ClientHttpRequestFactory httpRequestFactory;
 
     @Before
     public void setup() {
+        httpRequestFactory = mock(ClientHttpRequestFactory.class);
         config = new BondoraConfig();
         config.setApiUrl("api/");
         config.setAuthUrl("auth/");
@@ -40,12 +45,12 @@ public class AbstractBondoraApiTest {
         config.setSecret("secret");
         bondora = createBondoraTemplate();
         mockServer = MockRestServiceServer.createServer((RestTemplate)bondora.getRestTemplate());
-        appBondora = new BondoraImpl(config);
+        appBondora = new BondoraImpl(httpRequestFactory, config);
         appFacebookMockServer = MockRestServiceServer.createServer((RestTemplate)appBondora.getRestTemplate());
     }
 
     protected BondoraImpl createBondoraTemplate() {
-        return new BondoraImpl(config);
+        return new BondoraImpl(httpRequestFactory, config);
     }
 
     protected Resource jsonResource(String filename) {
