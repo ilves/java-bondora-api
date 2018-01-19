@@ -56,12 +56,12 @@ public class OAuthImpl implements OAuthOperations {
     }
 
     @Override
-    public String getAccessToken(String code) throws BondoraException {
+    public AccessToken getAccessToken(String code) throws BondoraException {
         return getAccessToken(code, null);
     }
 
     @Override
-    public String getAccessToken(String code, String redirectUri) throws BondoraException {
+    public AccessToken getAccessToken(String code, String redirectUri) throws BondoraException {
         MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
         map.add("grant_type", "authorization_code");
         map.add("client_id", api.getConfig().getClientId());
@@ -69,6 +69,17 @@ public class OAuthImpl implements OAuthOperations {
         map.add("code", code);
         map.add("redirect_uri", redirectUri);
         String path = api.getConfig().getAuthUrl() + "oauth/access_token";
-        return api.postObject(path, map, AccessToken.class).getAccessToken();
+        return api.postObject(path, map, AccessToken.class);
+    }
+
+    @Override
+    public AccessToken getAccessTokenByRefreshToken(String refreshToken) throws BondoraException {
+        MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
+        map.add("grant_type", "refresh_token");
+        map.add("client_id", api.getConfig().getClientId());
+        map.add("client_secret", api.getConfig().getSecret());
+        map.add("refresh_token", refreshToken);
+        String path = api.getConfig().getAuthUrl() + "oauth/access_token";
+        return api.postObject(path, map, AccessToken.class);
     }
 }

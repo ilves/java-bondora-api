@@ -16,6 +16,7 @@
 
 package ee.golive.bondora.api.operations;
 
+import ee.golive.bondora.api.domain.AccessToken;
 import ee.golive.bondora.api.exceptions.BondoraException;
 
 /**
@@ -25,6 +26,7 @@ public interface OAuthOperations {
     String getAuthUrl(String[] scope);
     String getAuthUrl(String[] scope, String redirectUri);
     String getAuthUrl(String[] scope, String redirectUri, String state);
-    String getAccessToken(String code) throws BondoraException;
-    String getAccessToken(String code, String redirectUri) throws BondoraException;
+    AccessToken getAccessToken(String code) throws BondoraException;
+    AccessToken getAccessToken(String code, String redirectUri) throws BondoraException;
+    AccessToken getAccessTokenByRefreshToken(String refreshToken) throws BondoraException;
 }

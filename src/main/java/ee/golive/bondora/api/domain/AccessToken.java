@@ -23,6 +23,8 @@ public class AccessToken {
     String accessToken;
     String scope;
     String tokenType;
+    String expiresIn;
+    String refreshToken;
 
     public String getAccessToken() {
         return accessToken;
@@ -46,5 +48,21 @@ public class AccessToken {
 
     public void setTokenType(String tokenType) {
         this.tokenType = tokenType;
+    }
+
+    public String getExpiresIn() {
+        return expiresIn;
+    }
+
+    public void setExpiresIn(String expiresIn) {
+        this.expiresIn = expiresIn;
+    }
+
+    public String getRefreshToken() {
+        return refreshToken;
+    }
+
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
     }
 }

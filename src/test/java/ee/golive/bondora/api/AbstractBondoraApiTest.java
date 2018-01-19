@@ -60,4 +60,8 @@ public class AbstractBondoraApiTest {
     protected String bondoraUrl(String path) {
         return config.getApiUrl()+path;
     }
+
+    protected String bondoraOauthUrl(String path) {
+        return config.getAuthUrl()+path;
+    }
 }
