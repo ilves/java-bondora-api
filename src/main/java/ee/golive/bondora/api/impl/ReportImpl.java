@@ -44,7 +44,7 @@ public class ReportImpl implements ReportOperations {
     public ApiResultList<LoanDatasetItem> getLoanDataset(String query) throws BondoraException {
         ParameterizedTypeReference<ApiResultList<LoanDatasetItem>> reference
                 = new ParameterizedTypeReference<ApiResultList<LoanDatasetItem>>() {};
-        return (api.fetchObject(api.apiUrl("loandataset"), getQueryParameters(query), reference));
+        return (api.fetchObject(api.apiUrl("publicdataset"), getQueryParameters(query), reference));
     }
 
     private MultiValueMap<String, String> getQueryParameters(String query) {
